@@ -1,0 +1,460 @@
+\documentclass[11pt, dvipsnames, usenames]{beamer}
+\usepackage{amsmath, amsfonts, amscd, amssymb, amsthm, tikz,pgfplots}
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage{caption}
+
+\usetheme{eaperry}
+
+% \newtheorem{theorem}{Theorem}
+\newtheorem{claim}[theorem]{Claim}
+
+\usepackage{changepage}
+
+\usepackage{sgamevar}
+\renewcommand{\gamestretch}{2}
+%\usepackage{array}
+%\usepackage{multirow}
+%\usepackage{float}
+%\usepackage{tabu}
+%\usepackage{threeparttable}
+%\usepackage{threeparttablex}
+%\usepackage[normalem]{ulem}
+%\usepackage{makecell}
+%\usepackage{xcolor}
+
+
+\bibliographystyle{aer}
+\usepackage{natbib}
+
+\title{Green Development within\\ Urban Environments}
+\institute{Spellman Program}
+\author{Evan Perry}
+\date{August 10, 2021}
+
+\begin{document}
+
+\maketitlepage
+
+\begin{frame}{Review}
+
+\begin{exampleblock}{\large\textbf{Research Question}}
+What characteristics of urban neighborhoods relate to the number of certified green commercial buildings?
+\end{exampleblock}
+
+\vfill
+Previously,
+\begin{itemize}
+	\item Spatial equilibrium model of firm sorting and green building adoption
+	\item Missing: Clear equilibrium, specific prediction, testable prediction
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Overview}
+
+\begin{block}{Today's Goal}
+Continue to investigate last week's model by clarifying its predictions and beginning to consider it empirically.
+\end{block}
+
+\tableofcontents
+
+\end{frame}
+
+\newsection{Model Review \& Refinement}
+
+\begin{frame}{Model Environment \& Overview}
+
+$\mathcal{N}$, a set of neighborhoods:
+\begin{itemize}
+	\item Fixed number of workers $N$
+	\item Ex ante, $N$ is the only difference between neighborhoods
+	\item Fixed amount of commercially developable land
+\end{itemize}
+
+\vfill
+Sorting Model: Where do different firms locate?
+
+\vfill
+Adoption Model: Which firms go green?
+
+\end{frame}
+
+\begin{frame}{Agents}
+
+Firms:
+\begin{itemize}
+	\item Choose inputs (labor, real estate), design of real estate (green/brown), and neighborhood ($N$)
+	\item Differ by:
+	\begin{itemize}
+		\item Agglomeration Economies (sector)
+		\item Green Benefits (individual firms)
+	\end{itemize}
+\end{itemize}
+
+\vfill
+Developer:
+\begin{itemize}
+	\item Chooses height, land footprint for green and brown buildings
+	\item Higher material costs for green construction
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Sorting}
+
+\begin{enumerate}
+	\item Firms with higher Agglomeration Economies locate in larger (higher $N$) neighborhoods
+	
+	\vfill
+	\item Firms do not sort based on their Green Benefits
+	
+	\vfill
+	\item Within neighborhoods:
+	\begin{itemize}
+		\item Agglomeration Economies are homogeneous
+		\item Firms differ only in their Green Benefits ($H\textcolor{gray}{igh}$, $L\textcolor{gray}{ow}$)
+	\end{itemize}
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}{Green Adoption}
+
+Differences in the proportion of Green real estate between neighborhoods come from the distribution of firm types:
+
+\vfill
+\textbf{Scenario \#1}: All Firms are equally likely to have a high Green Benefit
+
+\vfill
+\textbf{Scenario \#2}: Higher Agglomeration Economy Firms are more likely to have a high Green Benefit
+\end{frame}
+
+
+\newsection{Simulation}
+
+\begin{frame}{Price of Commercial Real Estate}
+
+\begin{tikzpicture}
+\begin{axis}[
+%    title={Title},
+    xlabel={No. of Workers ($N$), Thousands},
+    ylabel={Price per Sq. ft.},
+%    xtick={0,10000,20000,30000,40000,50000},
+	ytick={},
+%    legend style={at={(0.5,-0.1)},
+	legend pos = outer north east,
+    ymajorgrids=true,
+    grid style=dashed,
+    % only marks,
+    every axis plot/.append style={ultra thick},
+    ticklabel style = {font=\scriptsize}
+]
+
+\addplot[
+    color=EAPred,
+    mark = square,
+    mark size = 1pt
+    ]
+    coordinates {
+   (0.5,7.830622)(1,11.12225)(1.5,13.65648)(2,15.79753)(2.5,17.68682)(3,19.39703)(3.5,20.97139)(4,22.43807)(4.5,23.8167)(5,25.12154)(5.5,26.36339)(6,27.55064)(6.5,28.68997)(7,29.78678)(7.5,30.84554)(8,31.86999)(8.5,32.86329)(9,33.82813)(9.5,34.76684)(10,35.68146)
+    };
+\addplot[
+    color=EAPgreen,
+    mark = square,
+    mark size = 1pt
+    ]    
+    coordinates{
+(0.5,8.230062)(1,11.6896)(1.5,14.3531)(2,16.60336)(2.5,18.58903)(3,20.38648)(3.5,22.04114)(4,23.58264)(4.5,25.03159)(5,26.40299)(5.5,27.70819)(6,28.956)(6.5,30.15344)(7,31.30621)(7.5,32.41898)(8,33.49568)(8.5,34.53965)(9,35.5537)(9.5,36.5403)(10,37.50158)
+    };
+    \legend{\tiny Brown, \tiny Green}
+\end{axis}
+\end{tikzpicture}
+
+\end{frame}
+
+
+\begin{frame}{Commercial Space}
+
+\begin{tikzpicture}
+\begin{axis}[
+%    title={Title},
+    xlabel={No. of Workers ($N$), Thousands},
+    ylabel={Commercial Real Estate, Sq. ft.},
+%    xtick={0,10000,20000,30000,40000,50000},
+	ytick={},
+%    legend style={at={(0.5,-0.1)},
+	legend pos = outer north east,
+    ymajorgrids=true,
+    grid style=dashed,
+    % only marks,
+    every axis plot/.append style={ultra thick},
+    ticklabel style = {font=\scriptsize}
+]
+
+\addplot[
+    color=EAPred,
+    mark = square,
+    mark size = 1pt
+    ]
+    coordinates {
+   (0.5,42498.69)(1,172966.2)(1.5,393139)(2,703958.5)(2.5,1106088)(3,1600044)(3.5,2186246)(4,2865054)(4.5,3636777)(5,4501690)(5.5,5460039)(6,6512048)(6.5,7657921)(7,8897845)(7.5,10231997)(8,11660537)(8.5,13183619)(9,14801387)(9.5,16513975)(10,18321513)
+    };
+\addplot[
+    color=EAPgreen,
+    mark = square,
+    mark size = 1pt
+    ]    
+    coordinates{
+(0.5,6023.984)(1,24517.13)(1.5,55725.55)(2,99782.72)(2.5,156782.7)(3,226798.5)(3.5,309889.9)(4,406107.5)(4.5,515495.5)(5,638092.8)(5.5,773934.2)(6,923051.3)(6.5,1085473)(7,1261227)(7.5,1450336)(8,1652825)(8.5,1868714)(9,2098025)(9.5,2340776)(10,2596986)
+    };
+    \legend{\tiny Brown, \tiny Green}
+\end{axis}
+\end{tikzpicture}
+
+\end{frame}
+
+
+\begin{frame}{Firm Sorting}
+
+\begin{tikzpicture}
+\begin{axis}[
+%    title={Title},
+    xlabel={No. of Workers ($N$), Thousands},
+    ylabel={Price of Brown Com. Space},
+%    xtick={0,10000,20000,30000,40000,50000},
+	ytick={},
+%    legend style={at={(0.5,-0.1)},
+	legend pos = outer north east,
+    ymajorgrids=true,
+    grid style=dashed,
+    % only marks,
+    every axis plot/.append style={ultra thick},
+    ticklabel style = {font=\scriptsize}
+]
+
+\addplot[
+    color=EAPred,
+    mark = square,
+    mark size = 1pt
+    ]
+    coordinates {
+   (0.5,7.784394)(1,11.08057)(1.5,13.62255)(2,15.77245)(2.5,17.67106)(3,19.39079)(3.5,20.97474)(4,22.45103)(4.5,23.83922)(5,25.15358)(5.5,26.40488)(6,27.60151)(6.5,28.75012)(7,29.85615)(7.5,30.92405)(8,31.95755)(8.5,32.95981)(9,33.93355)(9.5,34.88108)(10,35.80445)
+    };
+\addplot[
+    color=EAPgreen,
+    mark = square,
+    mark size = 1pt
+    ]    
+    coordinates{
+(0.5,6.704508)(1,10.00921)(1.5,12.65327)(2,14.94283)(2.5,17.00039)(3,18.89016)(3.5,20.65091)(4,22.30826)(4.5,23.88022)(5,25.38002)(5.5,26.81773)(6,28.20126)(6.5,29.53693)(7,30.8299)(7.5,32.08445)(8,33.30418)(8.5,34.49214)(9,35.65097)(9.5,36.78293)(10,37.89002)
+    };
+    \legend{\tiny Low Agg. Effect, \tiny High Agg. Effect}
+\end{axis}
+\draw[dashed, thick] (3.1,0) -- (3.1,5.7);
+\end{tikzpicture}
+
+\end{frame}
+
+\begin{frame}{Scenario \#1}
+
+\begin{tikzpicture}
+\begin{axis}[
+%    title={Title},
+    xlabel={No. of Workers ($N$), Thousands},
+    ylabel={Prop. of Commercial Space},
+%    xtick={0,10000,20000,30000,40000,50000},
+	ytick={},
+%    legend style={at={(0.5,-0.1)},
+	legend pos = outer north east,
+    ymajorgrids=true,
+    grid style=dashed,
+    % only marks,
+    every axis plot/.append style={ultra thick},
+    ticklabel style = {font=\scriptsize}
+]
+
+\addplot[
+    color=EAPred,
+    mark = square,
+    mark size = 1pt
+    ]
+    coordinates {
+   (0.5,0.8758522)(1,0.8758522)(1.5,0.8758522)(2,0.8758522)(2.5,0.8758522)(3,0.8758522)(3.5,0.8758522)(4,0.8758522)(4.5,0.8758522)(5,0.8758522)(5.5,0.8758522)(6,0.8758522)(6.5,0.8758522)(7,0.8758522)(7.5,0.8758522)(8,0.8758522)(8.5,0.8758522)(9,0.8758522)(9.5,0.8758522)(10,0.8758522)
+    };
+\addplot[
+    color=EAPgreen,
+    mark = square,
+    mark size = 1pt
+    ]    
+    coordinates{
+(0.5,0.1241478)(1,0.1241478)(1.5,0.1241478)(2,0.1241478)(2.5,0.1241478)(3,0.1241478)(3.5,0.1241478)(4,0.1241478)(4.5,0.1241478)(5,0.1241478)(5.5,0.1241478)(6,0.1241478)(6.5,0.1241478)(7,0.1241478)(7.5,0.1241478)(8,0.1241478)(8.5,0.1241478)(9,0.1241478)(9.5,0.1241478)(10,0.1241478)
+    };
+    \legend{\tiny Brown, \tiny Green}
+\end{axis}
+\draw[dashed, thick] (3.1,0) -- (3.1,5.7);
+\end{tikzpicture}
+
+\end{frame}
+
+\begin{frame}{Scenario \#2}
+
+\begin{tikzpicture}
+\begin{axis}[
+%    title={Title},
+    xlabel={No. of Workers ($N$), Thousands},
+    ylabel={Price of Brown Com. Space},
+%    xtick={0,10000,20000,30000,40000,50000},
+	ytick={},
+%    legend style={at={(0.5,-0.1)},
+	legend pos = outer north east,
+    ymajorgrids=true,
+    grid style=dashed,
+    % only marks,
+    every axis plot/.append style={ultra thick},
+    ticklabel style = {font=\scriptsize}
+]
+
+\addplot[
+    color=EAPred,
+    mark = square,
+    mark size = 1pt
+    ]
+    coordinates {
+   (0.5,0.8758522)(1,0.8758522)(1.5,0.8758522)(2,0.8758522)(2.5,0.8758522)(3,0.8758522)(3.5,0.8758522)(4,0.8758522)(4.5,0.8758522)
+    };
+\addplot[
+    color=EAPred,
+    mark = square,
+    mark size = 1pt
+    ]
+    coordinates {
+(5,0.7232374)(5.5,0.7232374)(6,0.7232374)(6.5,0.7232374)(7,0.7232374)(7.5,0.7232374)(8,0.7232374)(8.5,0.7232374)(9,0.7232374)(9.5,0.7232374)(10,0.7232374)
+    };
+\addplot[
+    color=EAPgreen,
+    mark = square,
+    mark size = 1pt
+    ]    
+    coordinates{
+(0.5,0.1241478)(1,0.1241478)(1.5,0.1241478)(2,0.1241478)(2.5,0.1241478)(3,0.1241478)(3.5,0.1241478)(4,0.1241478)(4.5,0.1241478)
+    };
+\addplot[
+    color=EAPgreen,
+    mark = square,
+    mark size = 1pt
+    ]    
+    coordinates{
+(5,0.2767626)(5.5,0.2767626)(6,0.2767626)(6.5,0.2767626)(7,0.2767626)(7.5,0.2767626)(8,0.2767626)(8.5,0.2767626)(9,0.2767626)(9.5,0.2767626)(10,0.2767626)
+    };
+    \legend{\tiny Brown, ,\tiny Green}
+\end{axis}
+\draw[dashed, thick] (3.1,0) -- (3.1,5.7);
+\end{tikzpicture}
+
+\end{frame}
+
+
+\newsection{Towards Empirical Work}
+
+
+\begin{frame}{A Regression?}
+
+If sector $i$ inhabits a neighborhood, then
+
+\begin{align*}
+\log(Rg) = \beta_0 &+ \beta_1\log(N) + \beta_2 \log(\Psi_i(N)) + \beta_3\log(\alpha_1\mu_i + \alpha_2(1 - \mu_i) )\\ &+ \beta_4\log\left( \alpha_3\left(\frac{1 - \mu_i}{\mu_i}\right) + 1\right)
+\end{align*}
+
+\centering
+\vfill
+\begin{tabular}{c l}
+$R_g$ & Quantity of Green Real Estate\\
+$N$ & No. of Workers\\
+$\Psi_i$ & Agglomeration Effect for Industry $i$\\
+$\mu_i$ & Proportion of High Green Benefit Firms in $i$\\
+$\alpha, \beta$'s & Constants
+\end{tabular}
+
+\end{frame}
+
+
+\begin{frame}{Continued Work}
+
+Model Modifications and Extensions:
+\begin{itemize}
+	\item Economies of Scale in Green Construction
+	\item Dynamic Model
+	\item Connect Agglomeration and Green Benefits
+\end{itemize}
+
+\vfill
+Empirically:
+\begin{itemize}
+	\item Move towards variables that are measurable and known
+	\item Methodologies for estimating unobserved costs/benefits
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{References}
+\nocite{*}
+\bibliography{References}
+\end{frame}
+
+\fakesection{Appendix}
+
+\begin{frame}{Firm Problem}
+
+Choose inputs ($N\textcolor{gray}{umber~of~workers}, R\textcolor{gray}{eal~estate}$), Design ($g, b$), and neighborhood ($N$): 
+
+\vfill
+$$\max_{L, R, d, N} \left\{ \Psi_i(N) \lambda_{jd} L^\beta R^\gamma \bar{K} - \bar{W}N - p_d R - k_{i} \right\}$$
+
+\vfill
+\centering
+\begin{tabular}{c l}
+$\Psi_i$ & Agglomeration effect to firm type $i$\\
+$\lambda$ & Benefit from design $d$ to firm type $j$\\
+$\bar{K}$ & Fixed (tradeable) capital inputs\\
+$W$ & Wage\\
+$p_d$ & Price per sq.ft. with design $d$\\
+$k_{i}$ & Fixed capital cost for firm type $i$  
+\end{tabular}
+
+\end{frame}
+
+
+\begin{frame}{Developer Problem}
+
+Chooses $h\textcolor{gray}{eight}$ and $\ell\textcolor{gray}{and}$ for both green and brown real estate, subject to its land use constraint:
+
+\vfill
+$$\max_{h_g, h_b, \ell_g, \ell_b} \left\{ \pi_g(h_g, \ell_g) + \pi_b(h_b, \ell_b)\right\} \hspace{.5cm}\text{s.t.}\hspace{.5cm} \bar{\ell} = \ell_g + \ell_b$$ 
+where
+$$\pi_d(h, \ell) = p_d h\ell - c_d h^\delta \ell - p_\ell \ell$$
+\vfill
+Assume $c_g > c_b$ and $\delta > 1$ 
+
+\end{frame}
+
+
+\begin{frame}{Equilibrium Conditions}
+
+\begin{enumerate}
+	\item Labor Market Clearing
+	\item Green Real Estate Market Clearing
+	\item Brown Real Estate Market Clearing
+	\item Spatial Equilibrium Condition for Green Firms
+	\item Spatial Equilibrium Condition for Brown Firms
+\end{enumerate}
+
+\vfill
+We derive these from the agents' problems and then proceed to solve the system of equations they create
+
+\end{frame}
+
+
+\end{document}

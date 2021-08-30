@@ -1,0 +1,346 @@
+\documentclass[11pt, dvipsnames, usenames]{beamer}
+\usepackage{amsmath, amsfonts, amscd, amssymb, amsthm, tikz,pgfplots}
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage{caption}
+
+\usetheme{eaperry}
+
+% \newtheorem{theorem}{Theorem}
+\newtheorem{claim}[theorem]{Claim}
+
+\usepackage{changepage}
+
+\usepackage{sgamevar}
+\renewcommand{\gamestretch}{2}
+%\usepackage{array}
+%\usepackage{multirow}
+%\usepackage{float}
+%\usepackage{tabu}
+%\usepackage{threeparttable}
+%\usepackage{threeparttablex}
+%\usepackage[normalem]{ulem}
+%\usepackage{makecell}
+%\usepackage{xcolor}
+
+
+\bibliographystyle{aer}
+\usepackage{natbib}
+
+\title{Modeling Green Development}
+\subtitle{Another Spatial Equilibrium Model}
+\institute{Spellman Program}
+\author{Evan Perry}
+\date{August 3, 2021}
+
+\begin{document}
+
+\maketitlepage
+
+\begin{frame}{Review}
+
+\begin{exampleblock}{\large\textbf{Research Question}}
+What characteristics of urban neighborhoods relate to the number of certified green commercial buildings?
+\end{exampleblock}
+
+\vfill
+Previously,
+\begin{itemize}
+	\item General Equilibrium / Spatial Equilibrium Model
+	\item Prediction: Neighborhood characteristics do not matter
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Overview}
+
+\begin{description}
+\item[Purpose] How does firm location interact with green building adoption? 
+
+\vfill
+\item[Model] Describe how firms  (1) decide to buy green real estate, and (2) sort into neighborhoods
+
+\vfill
+\item[Method] Optimization and Equilibrium Characterization
+
+\vfill
+\item[Results] We find (1) adoption is unaffected by neighborhood choice, (2) firms with higher agglomeration economies move to more productive neighborhoods
+\end{description}
+
+\end{frame}
+
+\newsection{Model Overview \& Environment}
+
+\begin{frame}{Model Overview}
+
+\begin{itemize}
+\item Two Agents: Firms, Developers
+\vfill
+\item Labor Market is Exogenous
+\vfill
+\item Sorting Model: Agents need to determine where to locate
+\vfill
+\item Adoption Model: Agents need to decide green or brown
+\vfill
+\item Heterogeneous Firms:
+\begin{itemize}
+	\item Agglomeration Economies
+	\item Environmental Response
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Model Environment}
+
+\begin{itemize}
+\item Assume an arbitrary number of neighborhoods
+\item Neighborhoods have:
+\begin{itemize}
+	\item Unique ``Raw Productivity": $A$
+	\item $A$ is the \emph{only} unique characteristic of neighborhoods ex ante
+	\item Commercially Zoned Land: $\bar{\ell}$
+	\item As many workers as firms want, willing to work at a wage $\bar{W}$
+\end{itemize}
+\end{itemize}
+
+
+\vfill
+Example: $A_1 < A_2 < A_3 < A_4$
+
+\bigskip
+\centering
+\begin{tikzpicture}[scale = 0.6]
+\draw (0,0) rectangle (3,2) node[pos =.5]{$A_1$};
+\draw (4,0) rectangle (7,2) node[pos =.5]{$A_2$};
+\draw (8,0) rectangle (11,2) node[pos =.5]{$A_3$};
+\draw (12,0) rectangle (15,2) node[pos =.5]{$A_4$};
+\end{tikzpicture}
+
+
+\end{frame}
+
+
+\newsection{Agents \& Behavior}
+
+\begin{frame}{Firm Heterogeneity: Agglomeration Economies}
+
+\begin{quote}
+\small ``Agglomeration economies exist whenever people become more productive through proximity to others. They can represent the gains that come from reducing transport costs \ldots, or the \textcolor{EAPred}{advantages associated with the free flow of ideas in dense urban environments.} Agglomeration economies are the catchall explanation for why cities can be so productive" \citep{glaeser2008cities}
+\end{quote}
+
+\vfill
+Summarize agglomeration effects with $\psi_i (A)$
+\begin{itemize}
+\item Raw Productivity: $A$
+\item $\psi_i(A)$ is (super-linearly) increasing in $A$ \citep{gaubert2018firm}
+\item Agglomeration Economies: $i \in \{H\textcolor{gray}{igh}, L\textcolor{gray}{ow}\}$
+\item $\psi_H(A) > \psi_L(A)$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Firm Heterogeneity: Green Potential}
+
+Firms differ in the benefits they can receive from going green:
+%\begin{itemize}
+%	\item Primary benefits: lower operating costs
+%	\item Secondary benefits: higher ESG ratings, attract/retain employees  
+%\end{itemize}
+%
+\vfill
+Summarize benefits with $\lambda_{jd}$:
+\begin{itemize}
+	\item Potential: $j \in \{ H\textcolor{gray}{igh~Potential} , L\textcolor{gray}{ow~Potential} \}$
+	\item Design: $d \in \{ g\textcolor{gray}{reen}, b\textcolor{gray}{rown} \}$
+	\item $\lambda_{Hb} < \lambda_{Lb} < \lambda_{Lg} < \lambda_{Hg}$ 
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Firm Types}
+
+\hspace{1cm}
+\begin{game}{2}{2}[Green Potential][Agg. Economies]
+            \> Low \> High \\
+        Low \> $L, L$ \> $L, H$\\
+        High \> $H, L$ \> $H, H$\\
+\end{game}
+
+\vfill
+How does each type choose its design and neighborhood?
+
+\end{frame}
+
+
+\begin{frame}{Firm's Problem}
+
+Choose inputs ($N\textcolor{gray}{umber~of~workers}, R\textcolor{gray}{eal~estate}$), Design ($g, b$), and neighborhood ($A$): 
+
+\vfill
+$$\max_{N, R, d, A} \left\{ \psi_i(A) \lambda_{jd} N^\beta R^\gamma \bar{K} - \bar{W}N - p_d R - k_{ij} \right\}$$
+
+\vfill
+\centering
+\begin{tabular}{c l}
+$\psi$ & Agglomeration effect to firm type $i$\\
+$\lambda$ & Benefit from design $d$ to firm type $j$\\
+$\bar{K}$ & Fixed (tradeable) capital inputs\\
+$W$ & Wage\\
+$p_d$ & Price per sq.ft. with design $d$\\
+$k_{ij}$ & Fixed capital cost for firm type $ij$  
+\end{tabular}
+
+\end{frame}
+
+\begin{frame}{Developer's Problem}
+
+Chooses $h\textcolor{gray}{eight}$ and $\ell\textcolor{gray}{and}$ for both green and brown real estate, subject to its land use constraint:
+
+\vfill
+$$\max_{h_g, h_b, \ell_g, \ell_b} \left\{ \pi_g(h_g, \ell_g) + \pi_b(h_b, \ell_b)\right\} \hspace{.5cm}\text{s.t.}\hspace{.5cm} \bar{\ell} = \ell_g + \ell_b$$ 
+where
+$$\pi_d(h, \ell) = p_d h\ell - c_d h^\delta \ell - p_\ell \ell$$
+\vfill
+Assume $c_g > c_b$ and $\delta > 1$ 
+
+\end{frame}
+
+
+\newsection{Equilibrium Characterization}
+
+\begin{frame}{The Adoption Decision}
+
+\begin{block}{The Adoption Condition}
+Green real estate is bought and built if and only if:
+$$\left(\frac{c_g}{c_b}\right)^\frac{\gamma}{\delta} < \frac{\lambda_{jg}}{\lambda_{jb}}$$
+\end{block}
+
+\vfill
+Where is $A$? Again, neighborhood characteristics do not affect the adoption decision!
+
+\end{frame}
+
+
+\begin{frame}{Firm Sorting: Agglomeration Economies}
+
+\begin{claim}
+% For firms 1 and 2 with all else equal, if $\sigma_1 < \sigma_2$, then $A_1^* \leq A_2^*$ in spatial equilibrium.
+In our example, type High Agglomeration Economy firms will locate in neighborhoods with at least as high $A$ as any Low Agglomeration Economy Firm.
+\end{claim}
+
+\vfill
+\begin{itemize}
+\item Type $H$ firms can make better use of high $A$ neighborhoods
+\item The increase production more than offsets the increase in real estate prices
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Example Sorting}
+
+With $A_1 < A_2 < A_3 < A_4$, 
+\begin{center}
+\begin{tikzpicture}[scale = .7]
+\draw[fill =EAPred!40!] (0,0) rectangle (2,1) node[pos=.5]{$L$};
+\draw[fill=EAPblue!40!] (0,1) rectangle (2,2) node[pos=.5]{$L$};
+\draw[fill = brown!80!] (0,2) rectangle (2,3) node[pos=.5]{$b$};
+\draw[fill =EAPred!40!] (6,0) rectangle (8,1) node[pos=.5]{$L$};
+\draw[fill =EAPblue!85!] (6,1) rectangle (8,2) node[pos=.5]{$H$};
+\draw[fill = brown!80!] (6,2) rectangle (8,3) node[pos=.5]{$b$};
+\draw[fill =EAPred!85!] (3,0) rectangle (5,1) node[pos=.5]{$H$};
+\draw[fill =EAPblue!40!] (3,1) rectangle (5,2) node[pos=.5]{$L$};
+\draw[fill = ForestGreen] (3,2) rectangle (5,3) node[pos=.5]{$g$};
+\draw[fill =EAPred!85!] (9,0) rectangle (11,1) node[pos=.5]{$H$};
+\draw[fill =EAPblue!85!] (9,1) rectangle (11,2) node[pos=.5]{$H$};
+\draw[fill = ForestGreen] (9,2) rectangle (11,3) node[pos=.5]{$g$};
+\draw (-.3,-.3) rectangle (2.3, 3.3);
+\node[below] at (1, -.3) {$A_1$};
+\draw (2.7,-.3) rectangle (5.3, 3.3);
+\node[below] at (4, -.3) {$A_2$};
+\draw (5.7,-.3) rectangle (8.3, 3.3);
+\node[below] at (7, -.3) {$A_3$};
+\draw (8.7,-.3) rectangle (11.3, 3.3);
+\node[below] at (10, -.3) {$A_4$};
+\node[left] at (-1, .5) {Green Potential};
+\node[left] at (-1, 1.5) {Agg. Economies};
+\node[left] at (-1, 2.5) {Design};
+\end{tikzpicture}
+\end{center}
+
+The ordering within Agg. Economies is arbitrary
+
+\end{frame}
+
+\begin{frame}{How Are Types Distributed?}
+
+\centering
+\begin{columns}
+\begin{column}{.4\textwidth}
+\textbf{High $\psi_i$ Industries:}
+\vspace{.5cm}
+
+\begin{itemize}
+\item Finance
+\vspace{.25cm}
+
+\item Technology
+\vspace{.25cm}
+
+\item Media
+\end{itemize}
+\vspace{.75cm}
+From \cite{glaeser2008cities}
+
+\end{column}
+\begin{column}{.49\textwidth}
+\textbf{High Environmental-Social Governance Industries:}
+\vspace{.5cm}
+
+\begin{itemize}
+\item Technology (10)
+\vspace{.25cm}
+
+\item Medical Supply/Research (8)
+
+\vspace{.25cm}
+\item Finance \& Insurance (8)
+
+\vspace{.25cm}
+\item Utilities \& Energy (5)
+\end{itemize}
+
+\vspace{.5cm}
+From \href{https://www.investors.com/research/best-esg-companies-top-stocks-environmental-social-governance-values/}{MSCI ESG Research}
+\end{column}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}{Next Week}
+
+Continue to build the model with a focus on generalizing the model, narrowing in on an equilibrium, and working towards a testable model.
+
+\vfill
+Consider:
+\begin{itemize}
+\item Arbitrary Sectors and Continuous $\lambda$
+\item Prove Existence and Clarify Equilibrium
+\item Link Agglomeration and Environmentalism -- Reputation
+\item How would we estimate this model?
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{References}
+\nocite{*}
+\bibliography{References}
+\end{frame}
+
+%\begin{frame}{Proof Sketch: Claim 1}
+%
+%\end{frame}
+
+\end{document}

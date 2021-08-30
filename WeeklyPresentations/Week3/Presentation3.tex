@@ -1,0 +1,386 @@
+\documentclass[11pt]{beamer}
+\usepackage{amsmath, amsfonts, amscd, amssymb, amsthm, tikz}
+\setbeamertemplate{navigation symbols}{}
+\usepackage{natbib}
+%\setbeameroption{show notes}
+
+\usepackage{bm}
+\usepackage{pgfplots}
+\pgfplotsset{width=7cm,compat=1.9,height=8cm}
+
+
+\usetheme{eaperry}
+
+\bibliographystyle{aer}
+
+\title{A Theory of Investment for\\ Energy-Efficient Technologies}
+\subtitle{Part II}
+\author{Evan Perry}
+\institute{Spellman Program}
+\date{June 22, 2021}
+
+\begin{document}
+
+
+\maketitlepage
+\note{ \scriptsize
+Today we'll continue to build a theory for investment into energy-efficient technologies.
+}
+
+\begin{frame}{Review}
+
+\begin{exampleblock}{\large\textbf{Research Question}}
+What places attract energy-efficient buildings? How do neighborhood and area characteristics relate to the number of certified energy-efficient buildings?
+\end{exampleblock}
+
+\vfill
+Last Week:
+\begin{itemize}
+	\item Discrete Choice, Random Utility Model
+	\item Energy Savings v. Purchase Price
+	\item People appear to undervalue their future energy costs
+\end{itemize}
+\note{\scriptsize
+Before we get too far, let's quick review where we're at.
+\bigskip
+
+My research question is: (read the research question). Right so before digging into any data, first I want to build a theory behind the adoption of energy-efficient building certifications.
+\bigskip
+
+Last week we looked at Hausman's paper that built a theory for investment using a discrete choice, random utility model. In that model, we saw that agents made their decision to adopt a technology by weighing the potential energy savings of an energy-efficient good against its higher purchase price. Empirically, we saw some limited but suggestive evidence that people tend to place too much value of the purchase price relative to their future costs.
+\vfill
+}
+
+
+\end{frame}
+
+
+\begin{frame}{Paper}
+
+{\bf Allcott, Hunt and Michael Greenstone}, ``Is there an energy\\
+\quad efficiency gap?,'' {\it Journal of Economic Perspectives}, 2012, {\it 26}\\
+\quad (1), 3--28.
+
+\vfill
+
+\begin{definition}[Energy-Efficiency Gap]
+	``The wedge between the cost-minimizing level of energy efficiency and the level actually realized." \citep{allcott2012there}
+\end{definition}
+
+
+\end{frame}
+\note{\scriptsize
+This week I'm continuing with a paper that takes a more modern survey of the this same investment question titled: \textit{Is there an Energy Efficiency Gap?}. Now, I've mentioned it briefly before, but we define the energy-efficiency gap as: (read the definition).
+\bigskip
+
+The idea here is that for some reason, it seems like people and firms don't adopt energy-efficient technology even when it seems like they could save money by doing so. The difference between the amount of energy-efficient technology we could save money by adopting and  the amount of energy-efficient technology we actually adopt is the energy-efficiency gap. We'll see a graphical representation of this too.
+\vfill
+}
+
+
+
+\begin{frame}{Overview}
+
+\begin{description}
+\item[Purpose] Do people adopt EE goods when it minimizes their costs? How should we design policy for EE goods?
+\vfill
+%\pause
+\item[Model] Create a condition for the adoption of energy-efficient technology that considers investment inefficiencies and energy use externalities
+\vfill
+%\pause
+\item[Method] Survey and evaluate empirical estimates and evidence of an energy-efficiency gap
+\vfill
+%\pause
+\item[Results] Yes, there is an energy-efficiency gap -- no, we cannot stop climate change at a negative cost
+\end{description}
+\end{frame}
+\note{\scriptsize
+Last thing before we get into the model -- let's do a quick overview of the paper.
+\bigskip
+
+``Do people adopt energy-efficient technology when it minimizes their costs? That is, is there an energy-efficiency gap? Then in light of that we can consider how to design policy for energy-efficient goods.
+\bigskip
+
+Then we're going to create a condition for the adoption of energy efficient technology that incorporates two unique features: (1) investment inefficiencies, and (2) energy use externalities.
+\bigskip
+
+Now this paper isn't going to do any empirical estimation itself. Instead this paper is really just trying to survey the evidence out there and evaluate what the literature has established and hasn't.
+\bigskip
+
+And when we do that, we find that yes, there is an energy-efficiency gap -- but no, we cannot stop climate change at a negative cost. Right, the gap isn't big enough for us to put a major dent in emissions while saving money.
+\vfill
+}
+
+
+\newsection{The Model}{}
+
+
+\begin{frame}{Baseline Investment Decision}
+
+\begin{equation}
+\underbrace{\frac{p m_i (\lambda_E - \lambda_I)}{1 + r}}_\text{Energy Savings}  > \underbrace{c + \omega}_{\substack{\text{Adoption} \\ \text{Costs}}}
+\end{equation}
+\vfill
+\small
+\begin{itemize}
+\item $p$ : Price of Energy
+\item $m_i$ : Tastes for Energy Use for agent $i$ (Output)
+\item $\lambda_E$ : Energy Intensity for Efficient Good (Energy/Output)
+\item $\lambda_I$ :  Energy Intensity for Inefficient Good
+\item $r$ : Discount Rate
+\item $c$ : Explicit Adoption Costs
+\item $\omega$ : Unobserved (Implicit) Adoption Costs 
+\end{itemize}
+\end{frame}
+\note{\scriptsize
+Alright -- so this model is less of a model and more of a condition. And a pretty simple condition: the agent adopts an energy efficient technology if the discounted energy savings are greater than the costs of adoption.
+\bigskip
+
+So up top here we have the price of energy times an agent's tastes for energy use times the difference in the energy intensity of an energy efficient good and the inefficient alternative. This product here is the change is energy use, so the full numerator is the total energy savings. Then of course we have this 1 plus the discount rate, so the agent considers the present value of these future savings. 
+\bigskip
+
+On this side of the inequality we have $c$, which is the explicit cost of moving from an inefficient to efficient good, and these unobserved or implicit costs, $\omega$. This is really the baseline condition.
+\vfill
+}
+
+
+\begin{frame}{Including the Externality and Investment Inefficiency}
+
+Let $\varphi$ be the social cost of energy:
+\begin{equation}
+\frac{(p + \varphi) m_i  (\lambda_E - \lambda_I)}{1 + r} > c + \omega
+\end{equation}
+
+\vfill
+%\pause
+Let $\gamma$ be a weight on the discounted energy savings:
+\begin{equation}
+\frac{\gamma p m_i (\lambda_E - \lambda_I)}{1 + r}  > c + \omega
+\end{equation}
+
+\end{frame}
+\note{\scriptsize
+Now we want to make two additions to that baseline condition. First, let's consider what would happen if the agents internalized the energy use externality in their decision of what appliance to purchase. If we let $\varphi$ be the social cost of energy, then our new condition is just the baseline condition with this additional price $\varphi$ on energy. This condition will give us the socially optimal adoption of the energy efficient good.
+\bigskip
+
+Second, let's consider an investment inefficiency. Remember that the whole idea of the energy-efficiency gap is that people undervalue their future energy savings relative to the upfront cost when looking to purchase an energy-efficient good. To model this, we create this parameter, $\gamma$. I like to think of $\gamma$ as representing an agents' expectation or interpretation of the potential energy savings. When $\gamma$ is 1, then we just have our baseline condition. But when $\gamma$ is less than 1, then the agent undervalues the energy savings when making the investment decision, and as a result will not adopt even when it's profitable to do so.
+\vfill
+}
+
+
+\begin{frame}{Figure 1: Demand for an Energy-Efficient Good}
+
+\begin{tikzpicture}[scale = 0.5]
+\footnotesize
+\draw[thick, <->] (11,1) node[below]{$Q$} -- (0,1) -- (0,13) node[left]{$P$};
+\draw[EAPred, ultra thick, domain=1:10] plot (\x, {12 - 0.8*\x}) node[right]{$D_E$: $\gamma = 1, \varphi > 0$};
+\draw[black, ultra thick, domain=1:10] plot (\x, {10 - 0.7*\x}) node[right]{$D$: $\gamma = 1, \varphi = 0$};
+\draw[EAPblue, ultra thick, domain=1:10] plot (\x, {0.7*(10 - 0.7*\x)}) node[right]{$D_I$: $\gamma < 1, \varphi = 0$};
+\draw[ultra thick] (0,5) node[left]{$c$} -- (10,5) node[right]{Adoption Cost};
+\draw[dashed, thick] (4.082, 5) -- (4.082,1) node[EAPblue, below]{$q_I$};
+\draw[dashed, thick] (7.143, 5) -- (7.143,1) node[below]{$q$};
+\draw[dashed, thick] (8.75, 5) -- (8.75, 1) node[EAPred, below]{$q_E$};
+\normalsize
+\node at (15,10) {$\displaystyle \frac{\gamma (p + \varphi) m_i (\lambda_E - \lambda_I)}{1 +r} > c + \omega$};
+\node at (5.6,-0.5) {$\underbrace{~~~~~~~~~~~~}_\text{EE Gap}$};
+\end{tikzpicture}
+
+\end{frame}
+\note{\scriptsize
+Here we have a visual representation of the three equations. This equation here is just the generalized version of the equation.
+\bigskip
+
+This black demand curve represents the baseline decision condition. We have that $\gamma = 1$ so there is no investment inefficiency and $\varphi = 0$ so the energy use externality is not internalized. Where it hits the cost curve at $q$ is quantity of the energy efficient good we would expect to be at.
+\bigskip
+
+Now the red demand curve represents the second condition. Here $\gamma = 1$, so there is no investment inefficiency and $\varphi > 0$, so we have internalized the energy use externality. Where this crosses the adoption cost curve at $q_E$ is the socially optimal quantity of this good.
+
+\bigskip
+Lastly the blue demand curve represents the third condition. Here $\gamma < 1$ so there is an investment inefficiency, but $\varphi  = 0$, so the energy use externality has not been internalized. This leads to the quantity $q_I$. The difference here is the gap. Then this whole question of is there an energy efficiency gap boils down to whether or not we are at $q_I$ or $q$. 
+\vfill
+}
+
+\newsection{Results \& Implications}{}
+
+
+\begin{frame}{Results}
+
+\begin{enumerate}
+\item Yes, there is an energy-efficiency gap
+\begin{itemize}
+	\item Imperfect Information
+	\item Inattention
+\end{itemize}
+\vfill
+%\pause
+\item No, the energy-efficiency gap is not massive
+\vfill
+%\pause
+\item Welfare gains are largest when:
+\begin{itemize}
+	\item Pigouvian tax on energy
+	\item Target subsides towards agents with highest investment inefficiencies
+\end{itemize}
+\end{enumerate}
+\end{frame}
+\note{\tiny
+So when we survey all these different empirical papers, we end up with three basic conclusions:
+\bigskip
+
+First, to answer our question/title, yes there is an energy-efficiency gap. There are two main reasons for the gap: imperfect information and inattention or just behavioral reasons more broadly. So with imperfect information, there ends up being a number of scenarios where the party investing in the energy efficient technology is not the same party that enjoys the energy savings it creates. The typical example here is the landlord-tenant problem, where the landlord pays for the appliances, but the tenant pays for the electricity. Without a credible device to communicate the investment, the landlord would never make the investment in energy efficient appliances. The other reason is the much more intuitive inattention concept. People often fail to consider extra ``ancillary" costs  like sales tax, or in this case energy costs, when making decisions. 
+\bigskip
+
+Second, no the energy-efficiency gap is not massive. It's probably responsible for less than 5\% of all energy consumption. Many engineering estimates don't take into account the implicit costs incurred in adoption -- grossly overestimate how much energy we could save by closing the gap.
+\bigskip
+
+Third, on the policy-side of this, welfare gains will be largest when we handle distortion in the market as directly as we can. That means treating the energy use externality with a tax on energy, or equivalent cap-and-trade program. And for the investment inefficiency, that means subsidizing energy-efficient goods, and trying to target those subsides towards agents with the highest inefficiencies.
+\vfill
+}
+
+%\begin{frame}{Figure 2: Energy-Efficient Good Policy Intervention}
+%
+%\begin{tikzpicture}[scale = 0.5]
+%\footnotesize
+%\draw[thick, <->] (11,1) node[below]{$Q$} -- (0,1) -- (0,13) node[left]{$P$};
+%\draw[EAPred, thick, domain=1:10] plot (\x, {12 - 0.8*\x}) node[right]{$D_E$: $\gamma = 1, \varphi > 0$};
+%\draw[black, thick, domain=1:10] plot (\x, {10 - 0.7*\x}) node[right]{$D$: $\gamma = 1, \varphi = 0$};
+%\draw[EAPblue, thick, domain=1:10] plot (\x, {0.7*(10 - 0.7*\x)}) node[right]{$D_I$: $\gamma < 1, \varphi = 0$};
+%\draw[dashed, thick] (0,5) node[left]{$c$} -- (10,5) node[right]{Adoption Cost};
+%\draw[dashed, thick] (4.082, 5) -- (4.082,1) node[EAPblue, below]{$q_I$};
+%\draw[dashed, thick] (7.143, 5) -- (7.143,1) node[below]{$q$};
+%\draw[dashed, thick] (8.75, 5) -- (8.75, 1) node[EAPred, below]{$q_E$};
+%\draw[dashed, thick, white] (0,3.5) node[left, white]{$c'$} -- (7.143,3.5);
+%\end{tikzpicture}
+%
+%\end{frame}
+%
+%\begin{frame}{Figure 2: Energy-Efficient Good Policy Intervention}
+%
+%\begin{tikzpicture}[scale = 0.5]
+%\footnotesize
+%\fill [black!30!] (0,3.5) rectangle (7.143, 5);
+%\draw[thick, <->] (11,1) node[below]{$Q$} -- (0,1) -- (0,13) node[left]{$P$};
+%\draw[EAPred, thick, domain=1:10] plot (\x, {12 - 0.8*\x}) node[right]{$D_E$: $\gamma = 1, \varphi > 0$};
+%\draw[black, thick, domain=1:10] plot (\x, {10 - 0.7*\x}) node[right]{$D$: $\gamma = 1, \varphi = 0$};
+%\draw[EAPblue, thick, domain=1:10] plot (\x, {0.7*(10 - 0.7*\x)}) node[right]{$D_I$: $\gamma < 1, \varphi = 0$};
+%\draw[dashed, thick] (0,5) node[left]{$c$} -- (10,5) node[right]{Adoption Cost};
+%\draw[dashed, thick] (4.082, 5) -- (4.082,1) node[EAPblue, below]{$q_I$};
+%\draw[dashed, thick] (7.143, 5) -- (7.143,1) node[below]{$q$};
+%\draw[dashed, thick] (8.75, 5) -- (8.75, 1) node[EAPred, below]{$q_E$};
+%\normalsize
+%\small
+%\draw[dashed, thick] (0,3.5) node[left]{$c'$} -- (7.143,3.5);
+%\fill [black!30!] (13,12) rectangle (13.5,12.5);
+%\node[right] at (13.5, 12.25) {Subsidy Cost};
+%\end{tikzpicture}
+%
+%\end{frame}
+%
+%\begin{frame}{Figure 2: Energy-Efficient Good Policy Intervention}
+%
+%\begin{tikzpicture}[scale = 0.5]
+%\footnotesize
+%\fill [black!30!] (0,3.5) rectangle (7.143, 5);
+%\fill [EAPblue!50!] (4.082,5) -- (4.082,7.143) -- (7.143,5) -- cycle;
+%\draw[thick, <->] (11,1) node[below]{$Q$} -- (0,1) -- (0,13) node[left]{$P$};
+%\draw[EAPred, thick, domain=1:10] plot (\x, {12 - 0.8*\x}) node[right]{$D_E$: $\gamma = 1, \varphi > 0$};
+%\draw[black, thick, domain=1:10] plot (\x, {10 - 0.7*\x}) node[right]{$D$: $\gamma = 1, \varphi = 0$};
+%\draw[EAPblue, thick, domain=1:10] plot (\x, {0.7*(10 - 0.7*\x)}) node[right]{$D_I$: $\gamma < 1, \varphi = 0$};
+%\draw[dashed, thick] (0,5) node[left]{$c$} -- (10,5) node[right]{Adoption Cost};
+%\draw[dashed, thick] (4.082, 5) -- (4.082,1) node[EAPblue, below]{$q_I$};
+%\draw[dashed, thick] (7.143, 5) -- (7.143,1) node[below]{$q$};
+%\draw[dashed, thick] (8.75, 5) -- (8.75, 1) node[EAPred, below]{$q_E$};
+%\normalsize
+%\small
+%\draw[dashed, thick] (0,3.5) node[left]{$c'$} -- (7.143,3.5);
+%\fill [black!30!] (13,12) rectangle (13.5,12.5);
+%\node[right] at (13.5, 12.25) {Subsidy Cost};
+%\fill [EAPblue!50!] (13,11) rectangle (13.5,11.5);
+%\node[right] at (13.5, 11.25) {Subsidy Welfare Gain};
+%\end{tikzpicture}
+%
+%\end{frame}
+
+\begin{frame}{Figure 2: Energy-Efficient Good Policy Intervention}
+
+\begin{tikzpicture}[scale = 0.5]
+\footnotesize
+\fill [black!30!] (0,3.5) rectangle (7.143, 5);
+\fill [EAPblue!50!] (4.082,5) -- (4.082,8.734) -- (7.143, 6.286) -- (7.143,5) -- cycle;
+\fill [EAPred!50!] (8.75,5) -- (7.143,5) -- (7.143,6.286) -- cycle;
+\draw[thick, <->] (11,1) node[below]{$Q$} -- (0,1) -- (0,13) node[left]{$P$};
+\draw[EAPred, ultra thick, domain=1:10] plot (\x, {12 - 0.8*\x}) node[right]{$D_E$: $\gamma = 1, \varphi > 0$};
+\draw[black, ultra thick, domain=1:10] plot (\x, {10 - 0.7*\x}) node[right]{$D$: $\gamma = 1, \varphi = 0$};
+\draw[EAPblue, ultra thick, domain=1:10] plot (\x, {0.7*(10 - 0.7*\x)}) node[right]{$D_I$: $\gamma < 1, \varphi = 0$};
+\draw[ultra thick] (0,5) node[left]{$c$} -- (10,5) node[right]{Adoption Cost};
+\draw[dashed, thick] (4.082, 8.734) -- (4.082,1) node[EAPblue, below]{$q_I$};
+\draw[dashed, thick] (7.143, 6.286) -- (7.143,1) node[below]{$q$};
+\draw[dashed, thick] (8.75, 5) -- (8.75, 1) node[EAPred, below]{$q_E$};
+\normalsize
+\small
+\draw[dashed, thick] (0,3.5) node[left]{$c'$} -- (7.143,3.5);
+\fill [black!30!] (13,12) rectangle (13.5,12.5);
+\node[right] at (13.5, 12.25) {Subsidy Cost};
+\fill [EAPblue!50!] (13,11) rectangle (13.5,11.5);
+\node[right] at (13.5, 11.25) {Subsidy Welfare Gain};
+\fill [EAPred!50!] (13,10) rectangle (13.5,10.5);
+\node[right] at (13.5, 10.25) {Energy Tax Welfare Gain};
+\end{tikzpicture}
+
+\end{frame}
+\note{\scriptsize
+So this just gives a graphical representation of what this policy might look like. We start by subsidizing the good to correct the investment inefficiency, which brings us from $q_I$ to $q$. The cost of the subsidy is this gray box, and the blue trapezoid is the welfare gain from the subsidy. If we then also tax energy use, we end up at $q_E$, the social optimal, and have this little red triangle in welfare gain.
+\vfill
+}
+
+\begin{frame}{Relevance to Project}
+
+\begin{equation}
+\frac{\textcolor{EAPgreen}{\pmb\gamma} p m_i  (\lambda_E - \lambda_I)}{1 + r}  > c + \textcolor{EAPgreen}{\pmb\omega}
+\end{equation}
+
+\vfill
+\begin{itemize}
+	\item Investment inefficiencies, $\textcolor{EAPgreen}{\pmb\gamma}$, and implicit costs, $\textcolor{EAPgreen}{\pmb\omega}$, are new
+	\item Have a plausible spatial relationship
+	%\item Targeted subsides motivate why we should care about variation in the adoption condition in the first place
+\end{itemize}
+\end{frame}
+\note{\scriptsize
+So how does this connect to or help inform my research?
+\bigskip
+
+Well, first of we get two new parameters of interest: $\gamma$, the investment inefficiency and $\omega$ the implicit or unobserved adoption costs. Now, my project is spatial in nature, so what's interesting here is that $\gamma$ and $\omega$ have plausible spatial relationships. Because of the landlord-tenant problem, we would expect that a neighborhood with more renters than another has a smaller $\gamma$ and thus is less energy efficient. Also, we might expect that because poorer people have less money ``lying around" that they would have higher implicit costs. So poorer areas might also be less energy efficient.
+\bigskip
+ 
+Lastly, this whole piece about the need for targeted subsidies motivates why we should care about how energy efficiency varies spatially in the first place. Effective policy needs to be able to assess what this condition looks like for different people, and this project could help do this by grouping people by geographies.
+\vfill
+}
+
+\begin{frame}{Next Week}
+
+{\bf Eichholtz, Piet, Nils Kok, and John~M Quigley}, ``Doing well by\\
+\quad doing good? Green office buildings,'' {\it American Economic\\ \quad Review}, 2010, {\it
+  100} (5), 2492--2509.
+
+\vfill
+\begin{itemize}
+	\item Start thinking about energy efficiency in buildings
+	\item Discuss the background and goals of energy efficient building
+	\item Will people and/or firms pay more for an energy-efficient building?
+\end{itemize}
+
+\end{frame}
+\note{\scriptsize
+Then for next week I want to start thinking more about buildings specifically by looking at this paper \textit{Doing Well by Doing Good? Green Office Buildings}. We'll also take a look at energy efficient building just generally and think about this question: will people or firms pay more for an energy-efficient building?
+\vfill
+}
+
+\begin{frame}{References}
+\nocite{*}
+\bibliography{Sources}
+\end{frame}
+
+
+
+\end{document}

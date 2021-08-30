@@ -1,0 +1,218 @@
+\mode<presentation>
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CoeCollege
+% E. Perry
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Primary Colors
+\definecolor{crimson}{RGB}{136, 0, 17}
+\definecolor{gold}{RGB}{211, 144, 47}
+
+% Secondary Colors
+\definecolor{darkcrimson}{RGB}{133, 0, 0}
+\definecolor{lightgray}{RGB}{192, 192, 192}
+\definecolor{darkgray}{RGB}{128, 128, 128}
+
+% Tertiary Colors
+\definecolor{teal}{RGB}{0, 100, 125}
+\definecolor{plum}{RGB}{92, 13, 52}
+\definecolor{lightblue}{RGB}{105, 167, 196}
+\definecolor{darkblue}{RGB}{38, 54, 92}
+
+% Colors from other themes
+\definecolor{EAPviolet}{RGB}{86, 63, 70}
+\definecolor{EAPgreen}{RGB}{88, 140, 126}
+\definecolor{EAPyellow}{RGB}{242, 174, 114}
+
+\definecolor{EAPred}{RGB}{136, 0, 17}
+\definecolor{EAPblue}{RGB}{0, 100, 125}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Creating the ``Palettes"
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamercolor*{palette primary}{fg = darkcrimson, bg = lightgray}       % primary color palette
+\setbeamercolor*{palette secondary}{fg = white, bg = gold}            % second color palette
+\setbeamercolor*{palette tertiary}{fg = white, bg = crimson}            	% third color palette
+\setbeamercolor*{palette quaternary}{fg = crimson, bg = lightgray}% fourth color palette
+
+% If your theme of choice uses sidebars you can mess with these
+
+\setbeamercolor*{sidebar}{fg = crimson, bg = lightgray}
+\setbeamercolor*{palette sidebar primary}{fg = crimson}
+\setbeamercolor*{palette sidebar secondary}{fg = white}
+\setbeamercolor*{palette sidebar tertiary}{fg = crimson}
+\setbeamercolor*{palette sidebar quaternary}{fg = lightgray}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Blocks
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamercolor{block title}{fg = white, bg = gold}
+\setbeamercolor{block body}{bg = gold!20!}
+
+\setbeamercolor{block title example}{bg = teal, fg = white}
+\setbeamercolor{block body example}{bg = black!10!}
+
+\setbeamercolor{block title alerted}{bg = crimson, fg = white}
+\setbeamercolor{block body alerted}{bg = black!20!}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Miscellaneous Coloring and Formatting
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Itemize, Enumerate, and Description Environment
+\setbeamercolor{item}{fg = gold}                     
+\setbeamercolor{subitem}{fg = gold}            
+\setbeamercolor{subsubitem}{fg = teal}
+\setbeamercolor{enumerate item}{fg = black}
+\setbeamercolor{enumerate subitem}{fg = gold}
+\setbeamercolor{description item}{fg = gold}
+\setbeamerfont{description item}{series = \bf}
+
+% Caption options
+\setbeamertemplate{caption}[numbered]
+\setbeamercolor{caption}{fg = black}
+\setbeamercolor{caption name}{fg = black}
+%\setbeamerfont{caption}{series=\scshape}
+
+% Alerted Text
+\setbeamercolor{alerted text}{fg = crimson}
+
+% Text color
+\setbeamercolor{normal text}{fg = black}      
+
+% My preferred inner theme
+\useinnertheme{rounded}
+
+% Nobody uses these, so take them out
+\setbeamertemplate{navigation symbols}{}
+
+% If you don't like the default font
+%\usefonttheme{serif}
+
+% NOTE: Change background slide color under the title setup
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Section Header Slides
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% NOTE: The code below redefines the \section{} command
+% so that a special transition slide in created with the
+% section title. I have commented this out in favor of 
+% two new commands \newsection and \fakesection which provide
+% some more flexibility to do what I like.
+%
+%\AtBeginSection{
+%    \setbeamercolor{background canvas}{bg = EAPgreen}
+%	\begin{frame}
+%	\Large\color{white}\textbf{\insertsection}
+%	
+%	\begin{tikzpicture}
+%            \fill[EAPyellow] (0,-0.1) rectangle (0.9\textwidth,0);
+%            \fill[EAPviolet] (0,0) rectangle (0.9\textwidth, 0.2);
+%        \end{tikzpicture}
+%	\end{frame}
+%	\setbeamercolor{background canvas}{bg = white}
+%}
+
+% Creates section slide
+% 1st parameter = section title, 2nd parameter = subheading
+\newcommand{\newsection}[2]{
+ \setbeamercolor{background canvas}{bg = gold}
+ 	\section{#1}
+	\begin{frame}
+	\Large\color{white}\textbf{#1}
+	
+%	   \begin{tikzpicture}
+%            \fill[EAPyellow] (0,-0.1) rectangle (0.9\textwidth,0);
+%            \fill[EAPviolet] (0,0) rectangle (0.9\textwidth, 0.2);
+%        \end{tikzpicture}
+ %       \\
+        \normalsize\color{white}{#2}
+	\end{frame}
+	\setbeamercolor{background canvas}{bg = white}
+}
+
+% Same thing as \newsection but uses \section* instead of \section
+% (No Table of Contents Entry)
+\newcommand{\fakesection}[2]{
+ \setbeamercolor{background canvas}{bg = gold}
+ 	\section*{#1}
+	\begin{frame}
+	\Large\color{white}\textbf{#1}
+	
+%	\begin{tikzpicture}
+%            \fill[EAPyellow] (0,-0.1) rectangle (0.9\textwidth,0);
+%            \fill[EAPviolet] (0,0) rectangle (0.9\textwidth, 0.2);
+%        \end{tikzpicture}
+%        \\
+        \normalsize\color{white}{#2}
+	\end{frame}
+	\setbeamercolor{background canvas}{bg = white}
+}
+
+% Table of Contents
+\setbeamercolor{section in toc}{fg = black, bg = white}
+\setbeamercolor{section number projected}{bg=white,fg=crimson}
+\setbeamerfont{section number projected}{size=\large}
+\setbeamertemplate{section in toc}[square]
+
+\setbeamercolor{subsection in toc}{fg = black, bg = crimson}
+\setbeamercolor{subsection number projected}{bg=white,fg=crimson}
+\setbeamerfont{subsection number projected}{size=\normalsize}
+\setbeamertemplate{subsection in toc}[triangle]
+
+\setbeamertemplate{itemize item}[circle]
+\setbeamertemplate{itemize subitem}[triangle]
+\setbeamertemplate{itemize subsubitem}[square]
+\setbeamertemplate{enumerate items}[default]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Title Slide Formating & Coloring
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamerfont{frametitle}{series=\bfseries}        % Bold the title
+\setbeamerfont{title}{series=\bfseries}             % Bold frame titles
+
+\setbeamercolor{background canvas}{fg=black,bg=white}
+
+\setbeamercolor{titlelike}{fg=white,bg=darkcrimson}                         % Color for title slide
+\setbeamercolor{frametitle}{fg=darkcrimson, bg=white}                        % Color for slide titles
+
+\institute[Coe College]{Research in Economics: Fellows Program\\ \vspace{1.5em} \includegraphics[width = 1in]{CoeLogo.jpg}}
+
+\setbeamertemplate{frametitle}
+{
+    \nointerlineskip
+    \begin{beamercolorbox}[sep=0.3cm,ht=1.8em,wd=\paperwidth]{frametitle}
+        \vbox{}\vskip-2ex%
+        \strut\insertframetitle\strut \\
+        %\vskip-0.8ex
+        \hspace*{-\dimexpr0.5\paperwidth-0.5\textwidth}% <-- calculation of left margin width
+    	{\color{gold}\rule[0.5\baselineskip]{1.2\paperwidth}{3pt}}%
+        \vskip-2.7ex%
+    \end{beamercolorbox}
+}
+
+
+\newcommand{\maketitlepage}{%
+    \setbeamercolor*{background canvas}{fg=black,bg=white} % Background color
+    \begin{frame}[plain]
+    \centering
+%    \begin{tikzpicture}
+%        \fill[darkcrimson] (0,0) rectangle (0.9\textwidth,0.2);
+%        \fill[gold] (0,-0.1) rectangle (0.9\textwidth, 0);
+%    \end{tikzpicture}
+    \titlepage                                                   % Basic layout
+%    \begin{tikzpicture}
+%        \fill[darkcrimson] (0,-0.2) rectangle (0.9\textwidth,0);
+%        \fill[gold] (0,0) rectangle (0.9\textwidth, 0.1);
+%    \end{tikzpicture}
+    \end{frame}
+    \setbeamercolor{background canvas}{fg=black,bg=white}        % Reset colors
+}
+
+\mode
+<all>

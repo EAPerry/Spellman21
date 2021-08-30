@@ -1,0 +1,465 @@
+\documentclass[11pt]{beamer}
+\usepackage{amsmath, amsfonts, amscd, amssymb, amsthm, tikz}
+\setbeamertemplate{navigation symbols}{}
+\usepackage{natbib}
+
+\usepackage{pgfplots}
+
+\usetheme{eaperry}
+
+\bibliographystyle{aer}
+
+\title{A Theory of Investment for\\ Energy-Efficient Technologies}
+\subtitle{Part I}
+\author{Evan Perry}
+\institute{Spellman Program}
+\date{June 15, 2021}
+
+\begin{document}
+
+
+\maketitlepage
+
+
+%\begin{frame}{Overview}
+%\tableofcontents%[hideallsubsections]
+%\end{frame}
+%
+%\newsection{Introduction \& Overview}{}
+
+\begin{frame}{Review}
+\begin{exampleblock}{\large\textbf{Research Question}}
+What places attract energy-efficient buildings? How do neighborhood and area characteristics relate to the number of certified energy-efficient buildings?
+\end{exampleblock}
+
+\vfill
+
+We need some theory to describe how economic agents might invest in energy-efficient technologies.
+
+\end{frame}
+
+
+\begin{frame}{Paper \& Purpose}
+
+{\bf Hausman, Jerry~A}, ``Individual discount rates and the purchase\\ 
+\quad and  utilization of energy-using durables,'' {\it The Bell Journal of}\\ 
+\quad {\it Economics}, 1979, pp.~33--54.
+
+\vfill
+How do households decide
+	\begin{enumerate}[(i)]
+		\item what appliance to purchase?
+		\item how often to use that appliance?
+	\end{enumerate}
+
+\end{frame}
+
+
+\newsection{The Model}{\textit{Setup, Utilization Decision, Purchase Decision}}
+
+
+%\begin{frame}{Model Overview}
+%Focus is  specifically on Air Conditioners
+%
+%\vfill
+%\begin{enumerate}
+%\item Define an economic agent
+%\item Solve for the optimal electricity use
+%\item Add a stochastic component to the agents' appliance preferences
+%\item Given the optimal energy use, consider the optimal appliance purchase
+%\end{enumerate}
+%
+%\end{frame}
+\subsection{Defining the Agent}
+\begin{frame}{Defining the Agent's Preferences}
+
+The model focuses on Air Conditioners specifically.
+
+\begin{equation}
+U(x , z(\tau)) =  x - \eta\left(\frac{a}{2}\right)(z(\tau))^2
+\end{equation}
+
+\footnotesize
+\begin{itemize}
+\item $x$ : Composite Good
+\item $z(\tau)$ : Degree-hours of discomfort at thermostat setting $\tau$
+\item $\eta$ : Proportion of time at home
+\item $a$ : Constant 
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}{Defining the Agent's Budget}
+
+\begin{equation}
+ y =  \underbrace{p \left(\frac{\eta \lambda H(\tau )}{EER}\right)}_\text{Operating Cost} + \underbrace{\psi \rho}_\text{AC Cost} + \underbrace{x}_{\substack{\text{Non-AC} \\ \text{Spending}}}
+\end{equation}
+
+\footnotesize
+\begin{itemize}
+\item $y$ : Income
+\item $p$ : Price of Electricity
+\item $KWH = \frac{\eta \lambda H(\tau )}{EER}$ : ``Quantity" of Electricity
+\begin{itemize} \footnotesize
+	\item $\lambda$ : ``Size" of the AC
+	\item $H(\tau)$ : Degree-Hours Operating
+	\item $EER$ : Energy Efficiency Rating
+\end{itemize}
+\item $\psi$ : Discount/Durability Factor
+\item $\rho$ : Price of the AC
+\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}{Defining the Agent's Objective}
+
+\[
+\max U(x , z(\tau)) \hspace{1cm} \text{s.t.} \hspace{1cm} y =  p \left(\frac{\eta \lambda H(\tau )}{EER}\right) + \psi \rho + x
+\]
+
+\vfill
+Or better yet,
+\begin{equation}
+\max U = y - p \left(\frac{\eta \lambda H(\tau )}{EER}\right) - \psi \rho - \eta\left(\frac{a}{2}\right)(z(\tau))^2
+\end{equation}
+
+\end{frame}
+
+\subsection{Utilization Decision}
+\begin{frame}{Figure 1: Utilization Decision}
+
+\begin{tikzpicture}
+\begin{axis}[
+	axis lines = left,
+	ticks=none,
+    xlabel = {Discomfort, \( z(\tau) \)},
+    ylabel = {Composite Good, $x$},
+    xmin=0, xmax=27500,
+	ymin=45000, ymax=70000,
+	every axis plot/.append style={ultra thick}
+]
+\addplot[
+	domain = 1:25000,
+	samples=200,
+	color=EAPred
+]{51431.25+ 0.5*(0.0001/2)*x^2};
+\addplot[
+	domain = 1:25000,
+	samples=200,
+	color=EAPblue
+]{65000 - 0.45*3000 - (0.5*0.133*80000)/8000 * (25000 - x)};
+\end{axis}
+\node[EAPred] at (6.75,5.125) {IC};
+\node[EAPblue] at (6.75,4.3) {BC};
+\node at (5, 2) {$\eta a z(\tau) = \frac{\eta p\lambda}{EER}$};
+\end{tikzpicture}
+
+\end{frame}
+
+
+%\begin{frame}{Utilization Decision}
+%
+%Using the first-order condition,  then the utility maximizing utilization is:
+%\[
+%KWH = \frac{BTU}{EER}\left( \delta_1 CDH + \delta_2 \frac{p BTU}{EER}\right)
+%\]
+%
+%%$$CDH = \int_{T_0}^\infty (t-T_0)(-\alpha \gamma)e^{-\alpha(t-T_0)}$$
+%where $\delta_1 = \eta\mu$ and $\delta_2 = -\eta\mu^2/a$.
+%
+%\vfill
+%\footnotesize
+%\begin{itemize}
+%\item $BTU$ : AC Capacity (``Size"), in BTUs
+%\item $CDH$ : Total Cooling-Degree Hours
+%\end{itemize}
+%\end{frame}
+
+\subsection{Purchase Decision}
+
+\begin{frame}{Figure 2: High-Efficiency and Low-Efficiency ACs}
+
+\begin{tikzpicture}
+\begin{axis}[
+	axis lines = left,
+	ticks=none,
+    xlabel = {Cooling Degree-Hours},
+    ylabel = {Utility},
+    xmin=0, xmax=11000,
+    ymin=53500, ymax=65000,
+	every axis plot/.append style={ultra thick}
+]
+\addplot[
+	domain = 1:10000,
+	samples=200,
+	color=EAPred
+]{65000 - 0.133*(0.5*10*(8000/8000*(x - 10*0.133*8000/10000))) - 0.45*4500 - (0.5*(0.001/2))*(0.133*80000/(0.001*10000))^2};
+\addplot[
+	domain = 1:10000,
+	samples=200,
+	color=EAPblue
+]{65000 - 0.133*(0.5*10*(8000/6000*(x - 10*0.133*8000/6000))) - 0.45*1000 - (0.5*(0.001/2))*(0.133*80000/(0.001*6000))^2};
+\end{axis}
+\node[EAPred] at (6.75,1.2) {$U_\text{High}$};
+\node[EAPblue] at (6.75,0.6) {$U_\text{Low}$};
+\node at (2, 5) {\footnotesize $\Delta p KWH < \Delta \psi \rho$};
+\node at (5.1, 5) {\footnotesize $\Delta p KWH > \Delta \psi \rho$};
+\end{tikzpicture}
+
+\end{frame}
+
+
+\begin{frame}{Purchase Decision}
+
+Agent $k$'s utility from appliance $i$ is:
+\begin{equation}
+u_{ik} = \underbrace{y + \bar{\beta}_1 p_k KWH_{ik} + \bar{\beta}_2 \rho_i + \bar{\beta}_3 (p_k BTU_k / EER_{ik})^2}_\text{Deterministic} + \underbrace{\varepsilon_{ik}}_\text{Stochastic}
+\end{equation}
+
+\vfill
+The probability that appliance $i$ maximizes agent $k$'s utility is:
+\begin{equation}
+s_{ik} = \Pr\{ u_{ik} > u_{jk}, \text{for all}~j\neq i\}
+\end{equation}
+
+Two main factors that affect this probability: Climate and the Price of Electricity
+
+\end{frame}
+
+\newcommand{\y}{65000}
+\newcommand{\myeta}{0.5}
+\newcommand{\p}{0.133}
+\newcommand{\mylambda}{80000}
+\newcommand{\CDH}{25000}
+\newcommand{\Htau}{12500}
+\newcommand{\ztau}{12500}
+\newcommand{\mypsi}{0.45}
+\newcommand{\myrho}{3000}
+\newcommand{\EER}{8000}
+\newcommand{\mya}{0.0001}
+%\newcommand{\ubar}{\pgfmathparse{\y - (\myeta * \p * \mylambda * \Htau / \EER) - (\mypsi * \myrho) - (\myeta * (\a / 2 ) * \ztau * \ztau) }}
+\newcommand{\ubar}{51431.25}
+
+
+\begin{frame}{Figure 3: Climate Simulation}
+
+{\small
+$$ u_{ik} = y + \bar{\beta}_1 p_k KWH_{ik} + \bar{\beta}_2 \rho_i + \bar{\beta}_3 (p_k BTU_k / EER_{ik})^2 + \varepsilon_{ik}$$
+}
+
+\begin{tikzpicture}
+\begin{axis}[
+%    title={Title},
+    xlabel={Cooling Degree-Hours (thousands)},
+    ylabel={Probability of Adoption},
+%    xtick={0,10000,20000,30000,40000,50000},
+%    ytick={0,20,40,60,80,100,120},
+%    legend style={at={(0.5,-0.1)},
+	legend pos = outer north east,
+    ymajorgrids=true,
+    grid style=dashed,
+    % only marks,
+    every axis plot/.append style={ultra thick},
+    ticklabel style = {font=\scriptsize}
+]
+
+\addplot[
+    color=EAPblue,
+    mark = square,
+    mark size = 1pt
+    ]
+    coordinates {
+   (2,0.017)(4,0.03)(6,0.051)(8,0.08)(10,0.12)(12,0.173)(14,0.236)(16,0.31)(18,0.393)(20,0.473)(22,0.554)(24,0.632)(26,0.702)(28,0.764)(30,0.815)(32,0.86)(34,0.894)(36,0.922)(38,0.943)(40,0.959)(42,0.969)(44,0.979)(46,0.986)(48,0.99)(50,0.993)
+    };
+\addplot[
+    color=EAPred,
+    mark = square,
+    mark size = 1pt
+    ]    
+    coordinates{
+(2,0.983)(4,0.97)(6,0.949)(8,0.92)(10,0.88)(12,0.827)(14,0.764)(16,0.69)(18,0.607)(20,0.527)(22,0.446)(24,0.368)(26,0.298)(28,0.236)(30,0.185)(32,0.14)(34,0.106)(36,0.078)(38,0.057)(40,0.041)(42,0.031)(44,0.021)(46,0.014)(48,0.01)(50,0.007)
+    };
+    \legend{\tiny High-Efficiency AC, \tiny Low-Efficiency AC}
+\end{axis}
+\end{tikzpicture}
+
+
+\end{frame}
+
+
+\begin{frame}{Figure 4:  Electricity Price Simulation}
+
+{\small
+$$ u_{ik} = y + \bar{\beta}_1 p_k KWH_{ik} + \bar{\beta}_2 \rho_i + \bar{\beta}_3 (p_k BTU_k / EER_{ik})^2 + \varepsilon_{ik}$$
+}
+
+\begin{tikzpicture}
+\begin{axis}[
+%    title={Title},
+    xlabel={Price of Electricity (\$/KWH)},
+    ylabel={Probability of Adoption},
+%    xmin=0, xmax=100,
+%    ymin=0, ymax=120,
+%    xtick={0,20,40,60,80,100},
+%    ytick={0,20,40,60,80,100,120},
+%    legend style={at={(0.5,-0.1)},
+	legend pos = outer north east,
+    ymajorgrids=true,
+    grid style=dashed,
+    every axis plot/.append style={ultra thick},
+    ticklabel style = {font=\scriptsize},
+    xticklabel style={
+        /pgf/number format/fixed,
+        /pgf/number format/precision=2
+},
+scaled x ticks=false
+]
+
+\addplot[
+    color=EAPblue,
+    mark=square,
+    mark size = 1pt
+    ]
+    coordinates {
+    (0.005,0.005)(0.015,0.008)(0.025,0.012)(0.035,0.019)(0.045,0.031)(0.055,0.048)(0.065,0.072)(0.075,0.104)(0.085,0.147)(0.095,0.2)(0.105,0.262)(0.115,0.332)(0.125,0.412)(0.135,0.491)(0.145,0.569)(0.155,0.644)(0.165,0.711)(0.175,0.77)(0.185,0.822)(0.195,0.866)(0.205,0.899)(0.215,0.926)(0.225,0.947)(0.235,0.961)(0.245,0.974)(0.255,0.982)(0.265,0.988)(0.275,0.992)
+    };
+\addplot[
+    color=EAPred,
+    mark=square,
+    mark size = 1pt
+    ]    
+    coordinates{
+    (0.005,0.995)(0.015,0.992)(0.025,0.988)(0.035,0.981)(0.045,0.969)(0.055,0.952)(0.065,0.928)(0.075,0.896)(0.085,0.853)(0.095,0.8)(0.105,0.738)(0.115,0.668)(0.125,0.588)(0.135,0.509)(0.145,0.431)(0.155,0.356)(0.165,0.289)(0.175,0.23)(0.185,0.178)(0.195,0.134)(0.205,0.101)(0.215,0.074)(0.225,0.053)(0.235,0.039)(0.245,0.026)(0.255,0.018)(0.265,0.012)(0.275,0.008)
+    };
+    \legend{\tiny High-Efficiency AC, \tiny Low-Efficiency AC}
+\end{axis}
+\end{tikzpicture}
+
+
+\end{frame}
+
+\newsection{Results}{}
+
+%\begin{frame}{Table 1: Estimating Appliance Purchase}
+%
+%\footnotesize\centering
+%\begin{tabular}{r  c}
+%\hline\hline
+%& Max. Likelihood Estimate\\
+%\hline \\ [-2ex]
+%$\bar{\beta}_1$ & $-$0.194\\
+%& (0.110)\\ \\[-1.8ex]
+%$\bar{\beta}_2$ & $-$0.0449\\
+%& (0.0170)\\ \\[-1.8ex]
+%$\bar{\beta}_3$ & $-$0.0151\\
+%& (0.0127)\\ \\[-1.8ex]
+%$\sigma_{\beta_1}$ & 0.0183\\
+%& (0.0065)\\ \\[-1.8ex]
+%$\sigma_{\beta_2}$ & 0.0167\\
+%& (0.0088)\\ \\[-1.8ex]
+%$\sigma_{\beta_3}$ & 0.124\\
+%& (0.202)\\ \\[-1.8ex]
+%% $L(\theta)$ & $-$46.58\\
+%\hline\hline
+%\multicolumn{2}{l}{No. of Observations = 46}
+%\end{tabular}
+%\bigskip
+%
+%\normalsize
+%Adapted from \citep{hausman1979individual}.
+%%\begin{column}{0.5\textwidth}
+%%
+%%\vspace{3cm}
+%%$$L(\theta) = \sum_{k=1}^{N} \sum_{i=1}^{3} y_{ik} \log s_{ik}$$
+%%where $\theta$ is a vector with $\bar{\beta}_1$ , $\bar{\beta}_2$, $\bar{\beta}_3$,   $\sigma_{\beta_1}$, $\sigma_{\beta_2}$, and $\sigma_{\beta_3}$.
+%%\end{column}
+%%\end{columns}
+%\end{frame}
+
+
+\begin{frame}{Table 1: Implied Discount Rates by Income}
+
+\begin{center}
+\begin{tabular}{r c c c}
+\hline\hline
+\multicolumn{1}{c}{Income} & Observations & $\beta_2$ & Discount Rate \\
+\hline \\ [-0.8ex]
+$< \$6000$ & 6 & $-0.118$ & 89\% \\ [1.2ex]
+$\$6000$ -- $\$10000$ & 15 & $-0.075$ & 39\% \\ [1.2ex]
+$\$10000$ -- $\$15000$ & 16 & $-0.061$ & 27\% \\ [1.2ex]
+$\$15000$ -- $\$25000$ & 17 & $-0.049$ & 17\% \\ [1.2ex]
+$\$25000$ -- $\$35000$ & 8 & $-0.039$ & 8.9\% \\ [1.2ex]
+$\$35000$ -- $\$50000$ & 3 & $-0.031$ & 5.1\% \\ [1.2ex]
+\hline\hline
+\end{tabular}
+\end{center}
+Adapted from \citep{hausman1979individual}
+
+\end{frame}
+
+\begin{frame}{Contribution \& Summary}
+
+\begin{itemize}
+	\item This paper is the first major paper to suggest that the under-utilization of energy-efficient technologies is more than just an externality problem
+$$\text{High}~ r \Rightarrow \text{High}~ \beta_2 \Rightarrow \text{Emphasize Purchase Price}$$
+	\vfill	
+	\item Leads to a wider literature exploring this apparent gap
+	\vfill
+	\item Provides an interesting model for the adoption of EE technology
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Next Week}
+
+\begin{itemize}
+\item Incorporate Hausman's random utility model into an urban sorting model
+\vfill
+\item {\bf Allcott, Hunt and Michael Greenstone}, ``Is there an energy\\ 
+\quad efficiency gap?,'' {\it Journal of Economic Perspectives}, 2012,\\
+\quad {\it 26} (1), 3--28.
+\end{itemize}
+
+\end{frame}
+
+
+%\begin{frame}{Summary}
+%
+%\begin{itemize}
+%\item Goal is to build a model with a theory of investment into energy-efficient technologies
+%\item Built a discrete-choice, random-utility model with three important takeaways related to:
+%\begin{itemize}
+%	\item Climate
+%	\item Electricity Prices
+%	\item Income
+%\end{itemize}
+%\end{itemize}
+%
+%\end{frame}
+
+\begin{frame}{References}
+\nocite{*}
+\bibliography{Sources}
+\end{frame}
+
+
+%\fakesection{Appendix}{\textit{Other Relevant Material}}
+%
+%
+%\begin{frame}{Figure 4: Incorporating the Alonso-Muth-Mills Model}
+%
+%\centering
+%\begin{tikzpicture}[scale = .6]
+%	\draw[thick, <->] (10,0) node[below]{$x$} -- (0,0) -- (0,10) node[left]{$p_L$};
+%	\draw[EAPred, ultra thick] [domain = 0:9] plot (\x, {.7*(.3/1)^(.7/.3)*((5 - .5*\x)/1)^(1/.3)});
+%	\node[above, EAPred] at (9,0) {$p_L^{P}(x)$};
+%	\draw[EAPblue, ultra thick] [domain = 0:9] plot (\x, {.75*(.25/1)^(.75/.25)*((10 - .3*\x - 1)/2)^(1/.25) + 0.5}) node[EAPblue, right]{$p_L^R(x)$};
+%\end{tikzpicture}
+%
+%\end{frame}
+
+\end{document}

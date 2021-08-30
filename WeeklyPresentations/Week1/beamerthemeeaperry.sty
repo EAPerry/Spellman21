@@ -1,0 +1,188 @@
+\mode<presentation>
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% My Colors
+% EAP = Evan A. Perry
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Primary Colors
+\definecolor{EAPviolet}{RGB}{86, 63, 70}
+\definecolor{EAPgreen}{RGB}{88, 140, 126}
+\definecolor{EAPyellow}{RGB}{242, 174, 114}
+
+\definecolor{EAPred}{RGB}{136, 0, 17}
+\definecolor{EAPblue}{RGB}{0, 100, 125}
+
+\definecolor{EAPlightgray}{RGB}{192, 192, 192}
+\definecolor{EAPdarkgray}{RGB}{128, 128, 128}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Creating the ``Palettes"
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamercolor*{palette primary}{fg = white, bg = EAPgreen}    % primary color palette
+\setbeamercolor*{palette secondary}{fg = white, bg = EAPgreen}  % second color palette
+\setbeamercolor*{palette tertiary}{fg = white, bg = EAPgreen}   % third color palette
+\setbeamercolor*{palette quaternary}{fg = white, bg = EAPgreen} % fourth color palette
+
+% If your theme of choice uses sidebars you can mess with these
+
+\setbeamercolor*{sidebar}{fg = EAPviolet, bg = EAPlightgray}
+\setbeamercolor*{palette sidebar primary}{fg = EAPgreen}
+\setbeamercolor*{palette sidebar secondary}{fg = white}
+\setbeamercolor*{palette sidebar tertiary}{fg = EAPviolet}
+\setbeamercolor*{palette sidebar quaternary}{fg = lightgray}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Blocks
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamercolor{block title}{fg = white, bg = EAPgreen}
+\setbeamercolor{block body}{bg = black!10!}
+
+\setbeamercolor{block title alerted}{bg = EAPred, fg = white}
+\setbeamercolor{block body alerted}{bg = black!10!}
+
+\setbeamercolor{block title example}{bg = EAPyellow, fg = white}
+\setbeamercolor{block body example}{bg = black!10!}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Miscellaneous Coloring and Formatting
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Itemize, Enumerate, and Description Environment
+\setbeamercolor{item}{fg = EAPgreen}                     
+\setbeamercolor{subitem}{fg = EAPyellow}            
+\setbeamercolor{subsubitem}{fg = black}
+\setbeamercolor{enumerate subitem}{fg = EAPgreen}
+\setbeamercolor{description item}{fg = EAPgreen}
+
+% Caption options
+\setbeamertemplate{caption}[numbered]
+\setbeamercolor{caption}{fg = black}
+\setbeamercolor{caption name}{fg = black}
+\setbeamerfont{caption}{series=\scshape}
+
+% Alerted Text
+\setbeamercolor{alerted text}{fg = EAPred}
+
+% Text color
+\setbeamercolor{normal text}{fg = black}      
+
+% My preferred inner theme
+\useinnertheme{rounded}
+
+% Nobody uses these, so take them out
+\setbeamertemplate{navigation symbols}{}
+
+% If you don't like the default font
+%\usefonttheme{serif}
+
+% NOTE: Change background slide color under the title setup
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Section Header Slides
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% NOTE: The code below redefines the \section{} command
+% so that a special transition slide in created with the
+% section title. I have commented this out in favor of 
+% two new commands \newsection and \fakesection which provide
+% some more flexibility to do what I like.
+%
+%\AtBeginSection{
+%    \setbeamercolor{background canvas}{bg = EAPgreen}
+%	\begin{frame}
+%	\Large\color{white}\textbf{\insertsection}
+%	
+%	\begin{tikzpicture}
+%            \fill[EAPyellow] (0,-0.1) rectangle (0.9\textwidth,0);
+%            \fill[EAPviolet] (0,0) rectangle (0.9\textwidth, 0.2);
+%        \end{tikzpicture}
+%	\end{frame}
+%	\setbeamercolor{background canvas}{bg = white}
+%}
+
+% Creates section slide
+% 1st parameter = section title, 2nd parameter = subheading
+\newcommand{\newsection}[2]{
+ \setbeamercolor{background canvas}{bg = EAPgreen}
+ 	\section{#1}
+	\begin{frame}
+	\Large\color{white}\textbf{#1}
+	
+	\begin{tikzpicture}
+            \fill[EAPyellow] (0,-0.1) rectangle (0.9\textwidth,0);
+            \fill[EAPviolet] (0,0) rectangle (0.9\textwidth, 0.2);
+        \end{tikzpicture}
+        \\
+        \normalsize\color{white}{#2}
+	\end{frame}
+	\setbeamercolor{background canvas}{bg = white}
+}
+
+% Same thing as \newsection but uses \section* instead of \section
+% (No Table of Contents Entry)
+\newcommand{\fakesection}[2]{
+ \setbeamercolor{background canvas}{bg = EAPgreen}
+ 	\section*{#1}
+	\begin{frame}
+	\Large\color{white}\textbf{#1}
+	
+	\begin{tikzpicture}
+            \fill[EAPyellow] (0,-0.1) rectangle (0.9\textwidth,0);
+            \fill[EAPviolet] (0,0) rectangle (0.9\textwidth, 0.2);
+        \end{tikzpicture}
+        \\
+        \normalsize\color{white}{#2}
+	\end{frame}
+	\setbeamercolor{background canvas}{bg = white}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Title Slide Formating & Coloring
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamerfont{frametitle}{series=\bfseries}        % Bold the title
+\setbeamerfont{title}{series=\bfseries}             % Bold frame titles
+
+\setbeamercolor{titlelike}{fg=white,bg=EAPgreen}    % Color for title slide
+\setbeamercolor{frametitle}{fg=white,bg=EAPviolet}  % Color for slide titles
+
+\setbeamercolor{title}{fg=white}                    % Color for text on the title slide
+\setbeamercolor*{subtitle}{fg=white}                
+\setbeamercolor*{date}{fg=white}
+\setbeamercolor*{author}{fg=white}
+\setbeamercolor*{institute}{fg=white}
+
+% Messing around with the formatting of the title page now
+\newcommand{\maketitlepage}{%
+    \setbeamercolor*{background canvas}{fg=EAPgreen,bg=EAPgreen} % Background color
+    \begin{frame}[plain]
+    \centering
+    \begin{tikzpicture}
+        \fill[EAPviolet] (0,0) rectangle (0.9\textwidth,0.2);
+        \fill[EAPyellow] (0,-0.1) rectangle (0.9\textwidth, 0);
+    \end{tikzpicture}
+    \titlepage                                                   % Basic layout
+    \begin{tikzpicture}
+        \fill[EAPviolet] (0,-0.2) rectangle (0.9\textwidth,0);
+        \fill[EAPyellow] (0,0) rectangle (0.9\textwidth, 0.1);
+    \end{tikzpicture}
+    \end{frame}
+    \setbeamercolor{background canvas}{fg=black,bg=white}        % Reset colors
+}
+
+% Table of Contents
+\setbeamercolor{section in toc}{fg = black, bg = white}
+\setbeamercolor{section number projected}{bg=white,fg=EAPgreen}
+\setbeamerfont{section number projected}{size=\large}
+\setbeamertemplate{section in toc}[square]
+
+\setbeamertemplate{itemize item}[circle]
+\setbeamertemplate{itemize subitem}[triangle]
+\setbeamertemplate{itemize subsubitem}[square]
+\setbeamertemplate{enumerate items}[default]
+
+\mode
+<all>

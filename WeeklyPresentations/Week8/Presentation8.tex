@@ -1,0 +1,391 @@
+\documentclass[11pt]{beamer}
+\usepackage{amsmath, amsfonts, amscd, amssymb, amsthm, tikz,pgfplots}
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage{caption}
+
+\usetheme{eaperry}
+
+
+\usepackage{changepage}
+\usepackage{array}
+%\usepackage{multirow}
+%\usepackage{float}
+%\usepackage{tabu}
+%\usepackage{threeparttable}
+%\usepackage{threeparttablex}
+%\usepackage[normalem]{ulem}
+%\usepackage{makecell}
+%\usepackage{xcolor}
+
+
+\bibliographystyle{aer}
+\usepackage{natbib}
+
+\title{Modeling Green Development}
+\subtitle{A Rosen-Roback Approach}
+\institute{Spellman Program}
+\author{Evan Perry}
+\date{July 27, 2021}
+
+\begin{document}
+
+\maketitlepage
+
+\begin{frame}{Review}
+
+\begin{exampleblock}{\large\textbf{Research Question}}
+What characteristics of urban neighborhoods relate to the number of certified green commercial buildings?
+\end{exampleblock}
+
+\vfill
+Previously,
+\begin{itemize}
+	\item Alonso-Muth-Mills Model suggests green development occurs outside the city center
+	\item Even with modifications, still problematic
+	\item Need more than just distance from the city center
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Outline}
+
+\begin{block}{\textbf{Today's Goal}}
+Create a general equilibrium model that describes how a developer might decide where to build green. 
+\end{block}
+
+	\tableofcontents[hideallsubsections]
+\end{frame}
+
+\newsection{Model Environment}
+
+\begin{frame}{Model Environment: Among Neighborhoods}
+\small
+Assume a world composed of many distinct neighborhoods
+
+\vfill
+Neighborhood Components:
+\begin{itemize}
+	\item Agents: Workers, Firms, One Developer
+	\item Fixed Features: Housing Stock, Commercial Land, ``Public Capital"
+	\item Agents and (Tradeable) Goods can move freely between and within Neighborhoods
+\end{itemize}
+
+\vfill
+Key Conditions: All Agents Indifferent Between Neighborhoods (Spatial Equilibrium)
+
+\end{frame}
+
+
+\begin{frame}{Model Environment: Within the Neighborhood}
+
+\footnotesize
+\centering
+\begin{tikzpicture}[scale = 2.5]
+\draw[EAPyellow, fill = EAPyellow!20!, rounded corners] (0,0) rectangle (2,1.3) node[text width=4.2cm, pos=.5, black] {\textbf{Labor Market }\\ \vspace{.5em} Actors: Workers, Firms \\ \vspace{.5em} Choose: Wages, Population\\ \vspace{.5em} Need: Labor Supply, Labor Demand};
+\draw[EAPgreen, fill = EAPgreen!20!, rounded corners] (2.3, 0) rectangle (4.3, 1.3) node[text width=4.2cm, pos=.5, black] {\textbf{Product Market }\\ \vspace{.5em} Actors: Firms, World \\ \vspace{.5em} Choose: Output, No. of Firms\\ \vspace{.5em} Need: Revenues, Costs};
+\draw[EAPviolet, fill = EAPviolet!20!, rounded corners] (.9, -0.2) rectangle (3.4, -1.5) node[text width=5.5cm, pos=.5, black] {\textbf{Commercial Real Estate Market }\\ \vspace{.5em} Actors: Firms, Developer \\ \vspace{.5em} Choose: Price \& Quantity of Commercial RE, Green/Brown\\ \vspace{.5em} Need: Supply, Demand, Adoption\\ Condition};
+\end{tikzpicture}
+\vfill
+Key Conditions: All Agents Optimize in Each Market
+\end{frame}
+
+\newsection{Specifying the Model}
+
+\begin{frame}{The Worker}
+
+$$\max_{H,X} \left\{ U(H,X) = \theta H^\alpha X^{1-\alpha}\right\} \hspace{.5cm}\text{s.t.}\hspace{.5cm} W = p_H H + X$$
+
+\centering
+\begin{tabular}{c l l}
+$H$ & \alert{Housing (sq.ft.)} \\
+$X$ & \alert{Composite Good} \\
+$W$ & \alert{Wage} \\
+$\theta$ & Amenity Index \\
+$p_H$ & \alert{Price of Housing (per sq.ft.)} \\
+$p_x$ & Price of Composite Good (Numeraire)
+\end{tabular}
+
+\vfill
+\alert{Endogenous}, Exogenous
+
+\end{frame}
+
+
+\begin{frame}{The Firm}
+
+$$\max_{N, Z} \left\{ \pi(N, Z:d) = A\lambda_d N^\beta Z_d^\gamma \left(\frac{\bar{K}}{M}\right)^{1-\beta-\gamma} - WN - p_{z_{d}} Z_d - \kappa \right\}$$
+
+\centering
+\begin{tabular}{c l}
+$N$ & \alert{Number of Workers (Population)}\\
+$Z$ & \alert{Quantity of Commercial Real Estate (sq.ft.)}\\
+$\bar{K}$ & Neighborhood Capital \\
+$M$ & \alert{Number of Firms} \\
+$d$ & \alert{Design (Green or Brown)} \\
+$A$ & Neighborhood Productivity \\
+$\lambda$ & Energy Efficiency \\
+$p_{z}$ & \alert{Price of Commercial Real Estate} \\
+$\kappa$ & Fixed Capital Cost
+\end{tabular}
+
+\vfill
+\alert{Endogenous}, Exogenous
+
+\end{frame}
+
+
+\begin{frame}{The Developer}
+
+There is only one developer in a neighborhood, but it will still act competitively
+
+$$\max_{h, d} \left\{  \pi^\text{Dev}(h,d:\bar{\ell}) = p_{z_d} h_d \bar{\ell} -  c_d h_d^\delta \bar{\ell} - p_\ell \bar{\ell}\right\}$$
+
+\vfill
+\centering
+\begin{tabular}{c l}
+$h$ & \alert{Height} \\
+$\bar{\ell}$ & Commercial Land \\
+$d$ & \alert{Design (Green or Brown), $d\in \{g, b\}$} \\
+$c$ & Material Cost \\
+$p_\ell$ & \alert{Price of Commercial Land}\\
+$\delta$ & Height Friction Parameter, $\delta > 1$
+\end{tabular}
+
+\vfill
+\alert{Endogenous}, Exogenous
+
+\end{frame}
+
+
+\begin{frame}{Derivation Overview}
+
+\begin{enumerate}
+\item Optimization Conditions
+\begin{itemize}
+	\item First-Order Conditions
+	\item Market Clearing: Labor Market, Commercial Real Estate Market
+\end{itemize}
+
+\vfill
+\item Spatial Equilibrium Conditions
+\begin{itemize}
+	\item Agents must be indifferent between where they are and anywhere else
+	\item Workers -- Uniform Utility
+	\item Firms and the Developer -- Zero Profits
+\end{itemize}
+
+\vfill
+\item Five equations in five unknowns ($N$, $W$, $Z_d$, $p_{z_d}$, $M$)
+\end{enumerate}
+
+
+\end{frame}
+
+
+\newsection{Results}{\textit{Conditions and Comparative Statics}}
+
+\begin{frame}{Design}
+
+A developer will choose the design that maximizes the price it can afford to pay for the land. This leads to the result:
+
+\vfill
+\begin{block}{The Adoption Condition}
+The developer will choose to build green if and only if
+$$\frac{p_{z_g}^\delta}{c_g} > \frac{p_{z_b}^\delta}{c_b}$$
+where $c_g$ and $c_b$ are exogenous and $\delta >1$.
+\end{block}
+
+
+\end{frame}
+
+
+\begin{frame}{Do Neighborhood Characteristics Matter?}
+
+\begin{tikzpicture}
+\begin{axis}[
+%    title={Title},
+    xlabel={Productivity Index ($A$)},
+    ylabel={Adoptiong Condition Ratio},
+%    xtick={0,10000,20000,30000,40000,50000},
+	ytick={},
+%    legend style={at={(0.5,-0.1)},
+	legend pos = outer north east,
+    ymajorgrids=true,
+    grid style=dashed,
+    % only marks,
+    every axis plot/.append style={ultra thick},
+    ticklabel style = {font=\scriptsize}
+]
+
+\addplot[
+    color=EAPred,
+    mark = square,
+    mark size = 1pt
+    ]
+    coordinates {
+   (70,0.9604758)(72,0.9797136)(74,0.9987938)(76,1.017722)(78,1.036503)(80,1.055142)(82,1.073644)(84,1.092013)(86,1.110252)(88,1.128367)(90,1.14636)(92,1.164235)(94,1.181995)(96,1.199644)(98,1.217184)(100,1.234619)(102,1.251951)(104,1.269182)(106,1.286316)(108,1.303354)(110,1.320299)(112,1.337153)(114,1.353918)(116,1.370596)(118,1.38719)(120,1.4037)(122,1.420129)(124,1.436478)(126,1.45275)(128,1.468945)(130,1.485066)
+    };
+\addplot[
+    color=EAPgreen,
+    mark = square,
+    mark size = 1pt
+    ]    
+    coordinates{
+(70,0.9830021)(72,1.002691)(74,1.022219)(76,1.041591)(78,1.060813)(80,1.079889)(82,1.098825)(84,1.117624)(86,1.136291)(88,1.154831)(90,1.173246)(92,1.19154)(94,1.209717)(96,1.22778)(98,1.245731)(100,1.263575)(102,1.281313)(104,1.298948)(106,1.316484)(108,1.333922)(110,1.351264)(112,1.368513)(114,1.385672)(116,1.402741)(118,1.419724)(120,1.436621)(122,1.453436)(124,1.470168)(126,1.486822)(128,1.503397)(130,1.519896)
+    };
+    \legend{\tiny Brown Ratio, \tiny Green Ratio}
+\end{axis}
+\end{tikzpicture}
+
+
+\end{frame}
+
+
+\begin{frame}{The Problematic Premium}
+
+The premium occurs proportionally
+
+\vfill
+$$\frac{p_{z_g}}{p_{z_b}} = \left(\frac{\lambda_g}{\lambda_b}\right)^{\phi_1} \left(\frac{c_g}{c_b}\right)^{\phi_2}$$
+
+\vfill
+With the adoption condition, implies there are only two ways to change the design decision: $\lambda$ and $c$.
+
+\end{frame}
+
+
+\begin{frame}{City Characteristics Matter}
+
+\begin{tikzpicture}
+\begin{axis}[
+%    title={Title},
+    xlabel={Energy-Efficiency Ratio $(\lambda_g / \lambda_b)$},
+    ylabel={Adoptiong Condition Ratio},
+%    xtick={0,10000,20000,30000,40000,50000},
+	ytick={},
+%    legend style={at={(0.5,-0.1)},
+	legend pos = outer north east,
+    ymajorgrids=true,
+    grid style=dashed,
+    % only marks,
+    every axis plot/.append style={ultra thick},
+    ticklabel style = {font=\scriptsize}
+]
+
+\addplot[
+    color=EAPred,
+    mark = square,
+    mark size = 1pt
+    ]
+    coordinates {
+   (1,1.444624)(1.02,1.464904)(1.04,1.485066)(1.06,1.505114)(1.08,1.52505)(1.1,1.544877)(1.12,1.564598)(1.14,1.584215)(1.16,1.60373)(1.18,1.623146)(1.2,1.642465)
+    };
+\addplot[
+    color=EAPgreen,
+    mark = square,
+    mark size = 1pt
+    ]    
+    coordinates{
+(1,1.382559)(1.02,1.421648)(1.04,1.461051)(1.06,1.500765)(1.08,1.540786)(1.1,1.58111)(1.12,1.621734)(1.14,1.662656)(1.16,1.703871)(1.18,1.745377)(1.2,1.787171)
+    };
+    \legend{\tiny Brown Ratio, \tiny Green Ratio}
+\end{axis}
+\end{tikzpicture}
+
+\end{frame}
+
+
+\begin{frame}{Making $\lambda$ an Exponent}
+\scriptsize
+$$\max_{N, Z} \left\{ \pi(N, Z:d) = A^{\lambda_d} N^\beta Z_d^\gamma \left(\frac{\bar{K}}{M}\right)^{1-\beta-\gamma} - WN - p_{z_{d}} Z_d - \kappa \right\}$$
+
+\begin{tikzpicture}
+\begin{axis}[
+%    title={Title},
+    xlabel={Productivity ($A$)},
+    ylabel={Adoptiong Condition Ratio},
+%    xtick={0,10000,20000,30000,40000,50000},
+	ytick={},
+%    legend style={at={(0.5,-0.1)},
+	legend pos = outer north east,
+    ymajorgrids=true,
+    grid style=dashed,
+    % only marks,
+    every axis plot/.append style={ultra thick},
+    ticklabel style = {font=\scriptsize}
+]
+
+\addplot[
+    color=EAPred,
+    mark = square,
+    mark size = 1pt
+    ]
+    coordinates {
+   (70,0.6945319)(72,0.708443)(74,0.7222401)(76,0.7359273)(78,0.7495083)(80,0.7629865)(82,0.7763654)(84,0.789648)(86,0.8028373)(88,0.815936)(90,0.828947)(92,0.8418726)(94,0.8547153)(96,0.8674774)(98,0.880161)(100,0.8927682)(102,0.905301)(104,0.9177612)(106,0.9301507)(108,0.9424712)(110,0.9547243)(112,0.9669116)(114,0.9790347)(116,0.991095)(118,1.003094)(120,1.015033)(122,1.026913)(124,1.038735)(126,1.050502)(128,1.062213)(130,1.07387)
+    };
+\addplot[
+    color=EAPgreen,
+    mark = square,
+    mark size = 1pt
+    ]    
+    coordinates{
+(70,0.6836083)(72,0.6982693)(74,0.7128301)(76,0.7272941)(78,0.7416644)(80,0.7559442)(82,0.7701361)(84,0.7842428)(86,0.7982669)(88,0.8122107)(90,0.8260766)(92,0.8398666)(94,0.8535828)(96,0.8672272)(98,0.8808017)(100,0.894308)(102,0.9077477)(104,0.9211226)(106,0.9344342)(108,0.9476839)(110,0.9608732)(112,0.9740035)(114,0.9870761)(116,1.000092)(118,1.013053)(120,1.02596)(122,1.038813)(124,1.051615)(126,1.064366)(128,1.077067)(130,1.08972)
+    };
+    \legend{\tiny Brown Ratio, \tiny Green Ratio}
+\end{axis}
+\end{tikzpicture}
+
+
+\end{frame}
+
+
+\begin{frame}{Next Steps}
+
+Continue to refine model:
+\begin{itemize}
+	\item Get clear interaction between area characteristics and the adoption decision
+	\begin{itemize}
+		\item Give workers preferences over working for green firms
+		\item Non-proportional $\lambda$
+	\end{itemize}
+	\item Too deterministic and homogenous
+	\item What variables are actually useful and observable? 
+\end{itemize}
+
+\bigskip
+Collect data to address previous concerns, and for estimation
+
+\end{frame}
+
+
+\begin{frame}{References}
+\nocite{*}
+\bibliography{References}
+\end{frame}
+
+
+\fakesection{Appendix}{\textit{Some Additional Math}}
+
+
+\begin{frame}{System of Equations}
+
+Labor Supply and Spatial Equilibrium for the Worker
+$$N W^\frac{\alpha - 1}{\alpha} = \left(\frac{\theta}{\bar{V}}\right)^\frac{1}{\alpha} \bar{H} (1-\alpha)^{1-\alpha}$$
+Labor Demand (given $p_{z_d}$)
+$$N\left( W^{1-\gamma} p_{z_d}^{\gamma}\right)^\frac{1}{1-\beta-\gamma} = \left( A\lambda_d \beta^{1-\gamma} \gamma^\gamma\right)^\frac{1}{1-\beta-\gamma} \bar{K} $$
+
+Commercial Real Estate Supply
+$$Z p_{z_d}^\frac{-1}{\delta - 1} = \left(\delta c_d \right)^\frac{-1}{\delta -1} \bar{\ell_c} $$
+
+Commercial Real Estate Demand (given $W$)
+$$Z\left(W^\beta p_{z_d}^{1-\beta}\right)^\frac{1}{1-\beta-\gamma} = \left( A\lambda_d \beta^\beta \gamma^{1-\beta}\right)^\frac{1}{1-\beta-\gamma} \bar{K}$$
+
+Zero-Profit condition for the Firm (Spatial Equilibrium)
+$$\left( W^\beta p_{z_d}^\gamma \right)^\frac{1}{1-\beta-\gamma} M = \left(\frac{\Phi \bar{K}}{\kappa}\right) (A \lambda_d )^\frac{1}{1-\beta-\gamma}$$
+
+\end{frame}
+
+
+\end{document}
